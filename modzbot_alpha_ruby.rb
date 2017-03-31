@@ -1,6 +1,6 @@
 require 'discordrb'
 
-bot = Discordrb::Commands::CommandBot.new token: 'Mjk2MzEzNTgzMzM0MDY0MTI5.C7wfNQ.A_l-9CNncZ24ouQc4Wc4Ccg9mK4', client_id: 296313583334064129, prefix: ':'
+bot = Discordrb::Commands::CommandBot.new token: '', client_id: , prefix: ':'
 
 puts "This bot's invite URL is #{bot.invite_url}."
 puts 'I am booting, faggots!.'
