@@ -3,7 +3,7 @@ const bot = new Discord.Client();
 
 const key = require("./config.json"); //contains the prefix and bot token
 
-bot.login("Mjk3NDM3MzUyMTI3NjI3MjY0.C8KMXw.uSI1_K4RebjMyFuTNX7ClcqGnn0");
+bot.login("[INSERT-TOKEN-HERE]");
 
 bot.on("ready", () => {
   console.log('I am booting faggots!')
