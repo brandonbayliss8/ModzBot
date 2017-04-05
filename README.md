@@ -1,2 +1,2 @@
 # ModzBot
-A Discord bot based on Ruby and Javascript
+A Discord bot based on Javascript
