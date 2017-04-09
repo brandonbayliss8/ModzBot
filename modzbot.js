@@ -54,13 +54,47 @@ let args = message.content.split(" ").slice(1); //the second word from the users
     message.channel.sendMessage(`Currently in ${bot.guilds.size} servers!`)
   } else
   if (command === "help") {
-    message.channel.sendMessage("Check your DM for help")
-    message.author.sendMessage("The prefix for every command is a : \n\ For example: **`:help`** \n\ \n\ `help` shows this command \n\ `stab` stabs someone for you \n\ `status` shows the status of the bot \n\ `ping` the bot will react back \n\ `invite` will send the invite link so you can invite it to your own server \n\ `checkservers` shows how many servers I am currently serving \n\ `song` sends the best songs of the universe! (don't get triggered) \n\ `gibsoviet` a g8 poem for yuo \n\ More commands coming soon...")
+    message.reply("Check your DM for help")
+    message.author.sendMessage("The prefix for every command is a : \n\ For example: **`:help`** \n\ \n\ ```help``` shows this command \n\ ```stab``` stabs someone for you \n\ ```status``` shows the status of the bot \n\ ```ping``` the bot will react back \n\ ```invite``` will send the invite link so you can invite it to your own server \n\ ```checkservers``` shows how many servers I am currently serving \n\ ```almighty``` \"plays\" the best songs of the universe! (don't get triggered) \n\ ```userstatus``` shows the status of the message author! \n\ ```avatar``` shows your avatar \n\ ```user``` shows your Discord Username \n\ ```userid``` shows your User ID \n\ ```birth``` shows when your account was created \n\ \n\ \n\ More commands coming soon...")
   } else
-  if (command === "song") {
-    message.channel.sendMessage("The best songs for you! \n\ https://www.youtube.com/watch?v=U06jlgpMtQs \n\ https://www.youtube.com/watch?v=_Efb1DAeA34")
+  if (command === "almighy") {
+    message.channel.sendMessage("https://www.youtube.com/watch?v=U06jlgpMtQs \n\ https://www.youtube.com/watch?v=_Efb1DAeA34")
   } else
-  if (command === "gibsoviet") {
-    message.channel.sendMessage(">Get loud speakers \n\ >Buy a t-90 or if you can't get that T-55 \n\ >Plug speakers into a compute \n\ >volume is a max \n\ >start playing \n\ >drive around a major city with a soviet flag out and the song playing \n\ >look at people reactions \n\ >get shot by the cops for being communist and having a fucking Tank \n\ >Go into the hull \n\ >close the hatch's \n\ >run over cops \n\ >military/special forces come \n\ >carry on driving \n\ >other tank comes \n\ >load ammo \n\ >fire \n\ >miss \n\ >get blown up \n\ >survive \n\ >grab that flag over yours \n\ >scream the Soviet union shall rise again \n\ >die")
+  if (command === "kick-notinuse") {
+    return this.client.rest.methods.kickGuildMember(this.guild, this);
+  } else
+  if (command === "avatar") {
+    message.reply(message.author.avatarURL); //sends the avatar of the user in the current channel (NOT the server username, ONLY the Discord username)
+  } else
+  if (command === "user") {
+    message.reply(message.author.username); //sends the username of the user in the current channel
+  } else
+  if (command === "birth") {
+    message.reply(message.author.createdAt); //sends the date and time when the user created it's account
+  } else
+  if (command === "userstatus") {
+    message.reply(message.author.presence.status); //sends the status of the user. online: user is online - offline: user is offline or invisible - idle: user is AFK - dnd: user is in Do not Disturb
+  } else
+  if (command === "userid") {
+    message.reply(message.author.id); //sends the userID of the user
+  } else
+  if (command === "usergame-test") {
+    message.reply(message.author.presence.game.name); //DO NOT USE THIS COMMAND WHILE NOT PLAYING A GAME, IT WILL MAKE THE BOT CRASH
+  } else
+  if (command === "serverstats") {
+    message.channel.sendMessage(message.guild.iconURL); //server icon
+    message.channel.sendMessage("Name: " + message.guild.name); //server name
+    message.channel.sendMessage("Owner: " + message.guild.owner); //server owner
+    message.channel.sendMessage("Region: " + message.guild.region); //server region
+    message.channel.sendMessage("Roles: " + message.guild.roles); //server roles
+    message.channel.sendMessage("Channels: " + message.guild.channels); //server channels
+    message.channel.sendMessage("Members: " + message.guild.memberCount); //server member count
+    message.channel.sendMessage("Created at: " + message.guild.createdAt); //server creation date
+    message.channel.sendMessage("Default Channel: " + message.guild.defaultChannel); //default channel of the server
+    message.channel.sendMessage("Server ID: " + message.guild.id); //server ID
+  } else
+  var answ = ["Yes", "No", "Why?", "Stfu human", "Let's find it out!", "Maybe", "I don't know mate, Jesus why u asking such difficult questions", "Okay RIP me", "Are you fucking serious"];
+  if (command === "8ball") {
+    message.channel.sendMessage(answ[Math.floor(Math.random() * answ.length)]);
   }
 });
