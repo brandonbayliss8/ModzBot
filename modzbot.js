@@ -47,7 +47,7 @@ let args = message.content.split(" ").slice(1); //the second word from the users
     message.reply("al-stab, al-stab, I stabbed someone for yuo");
   } else
   if (command === "invite") {
-    message.reply("Invite me! https://discordapp.com/oauth2/authorize?client_id=297437352127627264&scope=bot")
+    message.reply("Invite me! https://discordapp.com/oauth2/authorize?client_id=297437352127627264&scope=bot&permissions=66321471")
   } else
   if (command === "status") {
     message.channel.sendMessage("Online!")
