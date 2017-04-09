@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
+const ytdl = require('ytdl-core');
+const streamOptions = { seek: 0, volume: 1 };
 
 const key = require("./config.json"); //contains the prefix and bot token
 
