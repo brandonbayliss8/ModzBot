@@ -2,7 +2,6 @@ const Discord = require("discord.js");
 const bot = new Discord.Client();
 const ytdl = require('ytdl-core');
 const streamOptions = { seek: 0, volume: 1 };
-
 const key = require("./config.json"); //contains the prefix and bot token
 
 bot.login("[INSERT-TOKEN-HERE]");
@@ -57,13 +56,12 @@ let args = message.content.split(" ").slice(1); //the second word from the users
   } else
   if (command === "help") {
     message.reply("Check your DM for help")
-    message.author.sendMessage("The prefix for every command is a : \n\ For example: **`:help`** \n\ \n\ ```help``` shows this command \n\ ```stab``` stabs someone for you \n\ ```status``` shows the status of the bot \n\ ```ping``` the bot will react back \n\ ```invite``` will send the invite link so you can invite it to your own server \n\ ```checkservers``` shows how many servers I am currently serving \n\ ```almighty``` \"plays\" the best songs of the universe! (don't get triggered) \n\ ```userstatus``` shows the status of the message author! \n\ ```avatar``` shows your avatar \n\ ```user``` shows your Discord Username \n\ ```userid``` shows your User ID \n\ ```birth``` shows when your account was created \n\ ```serverstats``` shows stats of your server \n\ ```8ball``` Ask the 8ball! Will answer random answers back \n\ \n\ \n\ More commands coming soon...")
+    message.author.sendMessage("The prefix for every command is a : \n\ For example: **`:help`** \n\ \n\ ```help``` shows this command \n\ ```stab``` stabs someone for you \n\ ```status``` shows the status of the bot \n\ ```ping``` the bot will react back \n\ ```invite``` will send the invite link so you can invite it to your own server \n\ ```checkservers``` shows how many servers I am currently serving \n\ ```userstatus``` shows the status of the message author! \n\ ```avatar``` shows your avatar \n\ ```user``` shows your Discord Username \n\ ```userid``` shows your User ID \n\ ```birth``` shows when your account was created \n\ ```serverstats``` shows stats of your server \n\ ```8ball``` Ask the 8ball! Will answer random answers back \n\ ```userstats``` will show some info about the user! \n\ ```play``` play\'s a song. Currently available: test. Command usage: ```play-[songname]```, for example: ```play-test``` \n\ ```stop``` stops the song. You need to join a voice channel.")
+    message.author.sendMessage("```about``` shows info about me! \n\ More commands will come soon! Stay tuned.")
+    message.author.sendMessage("A list of songs for the `play` command: \n\ ```play-test``` \n\ ```play-Electro-light_Throwback``` \n\ You can copy+paste the commands from this message for the music! ")
   } else
   if (command === "almighy") {
     message.channel.sendMessage("https://www.youtube.com/watch?v=U06jlgpMtQs \n\ https://www.youtube.com/watch?v=_Efb1DAeA34")
-  } else
-  if (command === "kick-notinuse") {
-    return this.client.rest.methods.kickGuildMember(this.guild, this);
   } else
   if (command === "avatar") {
     message.reply(message.author.avatarURL); //sends the avatar of the user in the current channel (NOT the server username, ONLY the Discord username)
@@ -87,7 +85,7 @@ let args = message.content.split(" ").slice(1); //the second word from the users
       message.reply("you have a life omg you are playing nothing")// call them a cunt
     }
 } else // next command
-  if (command === "serverstats") {
+  if (command === "serverstats-old") {
     message.channel.sendMessage(message.guild.iconURL); //server icon
     message.channel.sendMessage("Name: " + message.guild.name); //server name
     message.channel.sendMessage("Owner: " + message.guild.owner); //server owner
@@ -99,8 +97,92 @@ let args = message.content.split(" ").slice(1); //the second word from the users
     message.channel.sendMessage("Default Channel: " + message.guild.defaultChannel); //default channel of the server
     message.channel.sendMessage("Server ID: " + message.guild.id); //server ID
   } else
-  var answ = ["Yes", "No", "Why?", "Stfu human", "Let's find it out!", "Maybe", "I don't know mate", "Jesus why u asking such difficult questions", "Okay RIP me", "Are you fucking serious", "Get the fuck out!"];
+  if (command === "serverstats") {
+  const embed = new Discord.RichEmbed()
+    embed.setColor(3447003)
+    .setAuthor(`${bot.guilds.get(name).name}`, bot.guilds.get(name).iconURL)
+    .setTitle(`${bot.guilds.get(name).name}` , "Server Info")
+    .setDescription(`Information about this server`)
+    .setThumbnail(bot.guilds.get(name).iconURL)
+    .addField(`• Server ID`, name, true)
+    .addField(`• Server Owner`, `${bot.guilds.get(name).owner}`, true)
+    .addField(`• Server Region`, `${bot.guilds.get(name).region}`, true)
+    .addField(`• Created On`, `${bot.guilds.get(name).createdAt}`, true)
+    .addField(`• Members`, `${bot.guilds.get(name).memberCount}`, true)
+    .addField(`• Default Channel`, `${bot.guilds.get(name).defaultChannel}`, true)
+    .addField(`• Channels`, `${bot.guilds.get(name).channels.map(c => c.name).join(", ")}`)
+    .addField(`• Roles`, `${bot.guilds.get(name).roles.map(r => r.name).join(", ")}`)
+    .setFooter(`Generated on: ${message.createdAt}`)
+
+    message.channel.sendEmbed(embed);
+  } else
+  var answ = ["Yes", "No", "Why?", "Stfu human", "Let's find it out!", "Maybe", "I don't know mate", "Jesus why u asking such difficult questions", "Definately", "Are you fucking serious", "Get the fuck out!", "For sure!", "Kill yourself", "Yes", "No", "Of course!", "Of course not faggot"];
   if (command === "8ball") {
     message.channel.sendMessage(answ[Math.floor(Math.random() * answ.length)]);
+  } else
+  if (command === "play-test") {
+    const voiceChannel = message.member.voiceChannel;
+    if (!voiceChannel) {
+      return message.reply(`Please be in a voice channel first!`);
+    }
+    voiceChannel.join()
+      .then(connnection => {
+        let stream = ytdl("https://www.youtube.com/watch?v=U06jlgpMtQs", {audioonly: true});
+        const dispatcher = connnection.playStream(stream);
+        dispatcher.on('end', () => {
+          voiceChannel.leave();
+        });
+      });
+  } else
+  if (command === "stop") {
+    const voiceChannel = message.member.voiceChannel;
+    if (!voiceChannel) {
+      return message.reply(`You are not in a Voice Channel, be sure to join one first and be sure to check if I am playing something!`)
+    } else {
+      voiceChannel.leave();
+    }
+  } else
+  if (command === "userstats") {
+  const embed = new Discord.RichEmbed()
+    embed.setColor(3447003)
+    .setAuthor(`${message.author.username}`, message.author.avatarURL)
+    .setTitle(`${message.author.username}` , "Information about this user!")
+    .setDescription(`Information about ${message.author.username}`)
+    .setThumbnail(message.author.avatarURL)
+    .addField(`• Username`, `${message.author.username}`, true)
+    .addField(`• Account created`, `${message.author.createdAt}`, true)
+    .addField(`• Status`, `${message.author.presence.status}`, true)
+    .addField(`• User ID`, `${message.author.id}`, true)
+    .setFooter(`Generated on: ${message.createdAt}`)
+
+    message.channel.sendEmbed(embed);
+  } else
+  if (command === "about") {
+  const embed = new Discord.RichEmbed()
+    embed.setColor(3447003)
+    .setAuthor(`ModzBot`, `http://kuuv.io/i/d035x2P.jpg`)
+    .setTitle(`Information about ModzBot!`)
+    .setDescription(`am the gr8 bot!`)
+    .setThumbnail(`http://kuuv.io/i/d035x2P.jpg`)
+    .addField(`What am I`, `I am a bot for Discord. I am currently in development. This bot can do many things.`)
+    .addField(`Features!`, `I can welcome people in your server! You can ask me questions, let me play music and more! Use the help command for more info!`)
+    .addField(`My website`, `My website, with more information about me and my developer: http://modzon.weebly.com`)
+    .setFooter(`send modznoob a joke! generated on ${message.createdAt}`)
+
+    message.channel.sendEmbed(embed);
+  } else
+  if (command === "play-Electro-light_Throwback") {
+    const voiceChannel = message.member.voiceChannel;
+    if (!voiceChannel) {
+      return message.reply(`Please be in a voice channel first!`);
+    }
+    voiceChannel.join()
+      .then(connnection => {
+        let stream = ytdl("https://www.youtube.com/watch?v=cXLadJlS_nA", {audioonly: true});
+        const dispatcher = connnection.playStream(stream);
+        dispatcher.on('end', () => {
+          voiceChannel.leave();
+        });
+      });
   }
 });
