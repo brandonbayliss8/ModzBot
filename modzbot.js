@@ -40,13 +40,17 @@ command = command.slice(key.prefix.length); //command is the word connected to t
 let args = message.content.split(" ").slice(1); //the second word from the users command is stored
 
   if (command === "ping") {
-    message.channel.sendMessage("pong and now stfu stupid human");
+    message.channel.sendMessage( 'Pong' ).then( message => {
+      message.edit( `Can you stfu now please ( ${ message.createdTimestamp - message.createdTimestamp } ms )` );
+      }
+    );
   } else
   if (command === "stab") {
-    message.reply("al-stab, al-stab, I stabbed someone for yuo");
+    message.reply(`al-stab, al-stab, I stabbed ${message.mentions.users.first()} for yuo`);
   } else
   if (command === "invite") {
     message.reply("Invite me! https://discordapp.com/oauth2/authorize?client_id=297437352127627264&scope=bot&permissions=66321471")
+    console.log(`${time}: ${message.author.username} requested the bot\'s invite link`)
   } else
   if (command === "status") {
     message.channel.sendMessage("Online!")
@@ -55,10 +59,9 @@ let args = message.content.split(" ").slice(1); //the second word from the users
     message.channel.sendMessage(`Currently in ${bot.guilds.size} servers!`)
   } else
   if (command === "help") {
-    message.reply("Check your DM for help")
-    message.author.sendMessage("The prefix for every command is a : \n\ For example: **`:help`** \n\ \n\ ```help``` shows this command \n\ ```stab``` stabs someone for you \n\ ```status``` shows the status of the bot \n\ ```ping``` the bot will react back \n\ ```invite``` will send the invite link so you can invite it to your own server \n\ ```checkservers``` shows how many servers I am currently serving \n\ ```userstatus``` shows the status of the message author! \n\ ```avatar``` shows your avatar \n\ ```user``` shows your Discord Username \n\ ```userid``` shows your User ID \n\ ```birth``` shows when your account was created \n\ ```serverstats``` shows stats of your server \n\ ```8ball``` Ask the 8ball! Will answer random answers back \n\ ```userstats``` will show some info about the user! \n\ ```play``` play\'s a song. Currently available: test. Command usage: ```play-[songname]```, for example: ```play-test``` \n\ ```stop``` stops the song. You need to join a voice channel.")
-    message.author.sendMessage("```about``` shows info about me! \n\ More commands will come soon! Stay tuned.")
-    message.author.sendMessage("A list of songs for the `play` command: \n\ ```play-test``` \n\ ```play-Electro-light_Throwback``` \n\ You can copy+paste the commands from this message for the music! ")
+    message.reply("Check your DM's for help!")
+	  message.author.sendMessage("__**ModzBot Commands**__ \n **:about** sends some info about me in the channel \n **:invite** sends an invite link for the bot \n **:userstats <mentioned-user>** will give some info about the mentioned user! \n **:serverstats** gives stats about the server \n **:8ball <question>** answers a question for you! \n **:stab <mentioned-user>** stabs the mentioned user \n **:kick <mentioned-user>** kicks the mentioned user! (Permissions for kicking users required!) \n **:avatar** shows your avatar! \n **:birth** will show the date you have created your account! \n **:userid** shows your user ID \n **:usergame** shows the game you are currently playing \n **:clear** clears 100 messages in the channel. Requires the \"Manage messages\" permission. ");
+	    message.author.sendMessage("__**ModzBot Music Commands**__ \n *Be sure to be in a voice channel first!* \n  **:play-<song>** plays the song! \n **:stop** stops the music \n **List of commands for \`play\`** \n \`play-test\` \n \`play-Electro-light_Throwback\`");
   } else
   if (command === "almighy") {
     message.channel.sendMessage("https://www.youtube.com/watch?v=U06jlgpMtQs \n\ https://www.youtube.com/watch?v=_Efb1DAeA34")
@@ -85,7 +88,7 @@ let args = message.content.split(" ").slice(1); //the second word from the users
       message.reply("you have a life omg you are playing nothing")// call them a cunt
     }
 } else // next command
-  if (command === "serverstats-old") {
+  if (command === "serverstats-old") { //old serverstats
     message.channel.sendMessage(message.guild.iconURL); //server icon
     message.channel.sendMessage("Name: " + message.guild.name); //server name
     message.channel.sendMessage("Owner: " + message.guild.owner); //server owner
@@ -97,25 +100,31 @@ let args = message.content.split(" ").slice(1); //the second word from the users
     message.channel.sendMessage("Default Channel: " + message.guild.defaultChannel); //default channel of the server
     message.channel.sendMessage("Server ID: " + message.guild.id); //server ID
   } else
-  if (command === "serverstats") {
-  const embed = new Discord.RichEmbed()
-    embed.setColor(3447003)
-    .setAuthor(`${bot.guilds.get(name).name}`, bot.guilds.get(name).iconURL)
-    .setTitle(`${bot.guilds.get(name).name}` , "Server Info")
-    .setDescription(`Information about this server`)
-    .setThumbnail(bot.guilds.get(name).iconURL)
-    .addField(`• Server ID`, name, true)
-    .addField(`• Server Owner`, `${bot.guilds.get(name).owner}`, true)
-    .addField(`• Server Region`, `${bot.guilds.get(name).region}`, true)
-    .addField(`• Created On`, `${bot.guilds.get(name).createdAt}`, true)
-    .addField(`• Members`, `${bot.guilds.get(name).memberCount}`, true)
-    .addField(`• Default Channel`, `${bot.guilds.get(name).defaultChannel}`, true)
-    .addField(`• Channels`, `${bot.guilds.get(name).channels.map(c => c.name).join(", ")}`)
-    .addField(`• Roles`, `${bot.guilds.get(name).roles.map(r => r.name).join(", ")}`)
-    .setFooter(`Generated on: ${message.createdAt}`)
+  if (command === "serverstats") { //new serverstats
+    if (message.DMChannel) {
+      message.reply("Go into a server instead and try it again there!")
+    } else {
+      let name = message.guild.id;
+      const embed = new Discord.RichEmbed()
+        embed.setColor(3447003)
+        .setAuthor(`${bot.guilds.get(name).name}`, bot.guilds.get(name).iconURL)
+        .setTitle(`${bot.guilds.get(name).name}` , "Server Info")
+        .setDescription(`Information about this server`)
+        .setThumbnail(bot.guilds.get(name).iconURL)
+        .addField(`• Server ID`, name, true)
+        .addField(`• Server Owner`, `${bot.guilds.get(name).owner}`, true)
+        .addField(`• Server Region`, `${bot.guilds.get(name).region}`, true)
+        .addField(`• Created On`, `${bot.guilds.get(name).createdAt}`, true)
+        .addField(`• Members`, `${bot.guilds.get(name).memberCount}`, true)
+        .addField(`• Default Channel`, `${bot.guilds.get(name).defaultChannel}`, true)
+        .addField(`• Channels`, `${bot.guilds.get(name).channels.map(c => c.name).join(", ")}`)
+        .addField(`• Roles`, `${bot.guilds.get(name).roles.map(r => r.name).join(", ")}`)
+        .setFooter(`Generated on ${date} at ${time}`)
 
-    message.channel.sendEmbed(embed);
-  } else
+        message.channel.sendEmbed(embed);
+        console.log(`${time}: ${message.author.username} requested serverinfo about ${bot.guilds.get(message.guild.id).name}`)
+    }
+} else //next command
   var answ = ["Yes", "No", "Why?", "Stfu human", "Let's find it out!", "Maybe", "I don't know mate", "Jesus why u asking such difficult questions", "Definately", "Are you fucking serious", "Get the fuck out!", "For sure!", "Kill yourself", "Yes", "No", "Of course!", "Of course not faggot"];
   if (command === "8ball") {
     message.channel.sendMessage(answ[Math.floor(Math.random() * answ.length)]);
@@ -142,7 +151,7 @@ let args = message.content.split(" ").slice(1); //the second word from the users
       voiceChannel.leave();
     }
   } else
-  if (command === "userstats") {
+  if (command === "userstats-old") {
   const embed = new Discord.RichEmbed()
     embed.setColor(3447003)
     .setAuthor(`${message.author.username}`, message.author.avatarURL)
@@ -153,7 +162,7 @@ let args = message.content.split(" ").slice(1); //the second word from the users
     .addField(`• Account created`, `${message.author.createdAt}`, true)
     .addField(`• Status`, `${message.author.presence.status}`, true)
     .addField(`• User ID`, `${message.author.id}`, true)
-    .setFooter(`Generated on: ${message.createdAt}`)
+    .setFooter(`Generated on ${date} at ${time}`)
 
     message.channel.sendEmbed(embed);
   } else
@@ -165,9 +174,10 @@ let args = message.content.split(" ").slice(1); //the second word from the users
     .setDescription(`am the gr8 bot!`)
     .setThumbnail(`http://kuuv.io/i/d035x2P.jpg`)
     .addField(`What am I`, `I am a bot for Discord. I am currently in development. This bot can do many things.`)
-    .addField(`Features!`, `I can welcome people in your server! You can ask me questions, let me play music and more! Use the help command for more info!`)
+    .addField(`Features!`, `I can welcome people in your server! You can ask me questions, let me play music and more!`)
     .addField(`My website`, `My website, with more information about me and my developer: http://modzon.weebly.com`)
-    .setFooter(`send modznoob a joke! generated on ${message.createdAt}`)
+    .addField(`Commands`, `For a list of all the commands, use the \`help\` command! A command list can also be found on my site`)
+    .setFooter(`send modznoob a joke! Generated on ${date} at ${time}`)
 
     message.channel.sendEmbed(embed);
   } else
@@ -184,5 +194,65 @@ let args = message.content.split(" ").slice(1); //the second word from the users
           voiceChannel.leave();
         });
       });
+  } else
+  if (command === "kick")
+    if(!message.guild.member(bot.user).hasPermission("KICK_MEMBERS")){
+    message.reply("I do not have the right permissions! (Kick Members)");
+    } else {
+    if (!message.member.hasPermission("KICK_MEMBERS")) {
+     message.reply("You do not have the right permissions!");
+    } else {
+      let userToKick = message.mentions.users.first();
+      message.guild.member(userToKick).kick();
+      message.reply(`kicked ${message.mentions.users.first()}`);
+      console.log(`${time}: ${message.author.username} kicked ${message.mentions.users.first()}`)
+    }
+  } else
+  if (command === "userstats") {
+    if (message.mentions.users.first() === undefined) {
+      const embed = new Discord.RichEmbed()
+        embed.setColor(3447003)
+        .setAuthor(`${message.author.username}`, message.author.avatarURL)
+        .setTitle(`${message.author.username}` , "Information about this user!")
+        .setDescription(`Information about ${message.author.username}`)
+        .setThumbnail(message.author.avatarURL)
+        .addField(`• Username`, `${message.author.username}`, true)
+        .addField(`• Account created`, `${message.author.createdAt}`, true)
+        .addField(`• Status`, `${message.author.presence.status}`, true)
+        .addField(`• User ID`, `${message.author.id}`, true)
+        .setFooter(`Generated on ${date} at ${time}`)
+
+        message.channel.sendEmbed(embed);
+
+        console.log(`${time}: ${message.author.username} requested userinfo about ${message.author.username}`)
+    } else {
+      const embed = new Discord.RichEmbed()
+        embed.setColor(3447003)
+        .setAuthor(`${message.mentions.users.first().username}`, message.mentions.users.first().avatarURL)
+        .setTitle(`${message.mentions.users.first().username}` , "Information about this user!")
+        .setDescription(`Information about ${message.mentions.users.first().username}`)
+        .setThumbnail(message.mentions.users.first().avatarURL)
+        .addField(`• Username`, `${message.mentions.users.first().username}`, true)
+        .addField(`• Account created`, `${message.mentions.users.first().createdAt}`, true)
+        .addField(`• Status`, `${message.mentions.users.first().presence.status}`, true)
+        .addField(`• User ID`, `${message.mentions.users.first().id}`, true)
+        .setFooter(`Generated on ${date} at ${time}`)
+
+        message.channel.sendEmbed(embed);
+
+        console.log(`${time}: ${message.author.username} requested userinfo about ${message.mentions.users.first().username}`)
+    }
+  } else
+  if (command === "clear")
+    if(!message.guild.member(bot.user).hasPermission("MANAGE_MESSAGES")){
+      message.reply("Error: I miss the right permissions to do that! (Manage messages)");
+    } else {
+    if (!message.member.hasPermission("MANAGE_MESSAGES")) {
+      message.reply("Error: You miss the right permissions to do that!");
+    } else {
+      message.channel.fetchMessages({limit: 100})
+        .then(messages => message.channel.bulkDelete(messages));
+      console.log(`${time}: ${message.author.username} used the :clear command`)
+    }
   }
 });
