@@ -41,16 +41,16 @@ let args = message.content.split(" ").slice(1); //the second word from the users
 
   if (command === "ping") {
     message.channel.sendMessage( 'Pong' ).then( message => {
-      message.edit( `Can you stfu now please ( ${ message.createdTimestamp - message.createdTimestamp } ms )` );
+      message.edit( `Can you stfu now please ( ${ message.createdTimestamp - message.editedTimestamp } ms )` );
       }
     );
   } else
   if (command === "stab") {
-    message.reply(`al-stab, al-stab, I stabbed ${message.mentions.users.first()} for yuo`);
+    message.reply(`perkele сука блять I stabbed ${message.mentions.users.first()}`);
   } else
   if (command === "invite") {
     message.reply("Invite me! https://discordapp.com/oauth2/authorize?client_id=297437352127627264&scope=bot&permissions=66321471")
-    console.log(`${time}: ${message.author.username} requested the bot\'s invite link`)
+    console.log(`${message.createdAt}: ${message.author.username} requested the bot\'s invite link`)
   } else
   if (command === "status") {
     message.channel.sendMessage("Online!")
@@ -60,8 +60,8 @@ let args = message.content.split(" ").slice(1); //the second word from the users
   } else
   if (command === "help") {
     message.reply("Check your DM's for help!")
-	  message.author.sendMessage("__**ModzBot Commands**__ \n **:about** sends some info about me in the channel \n **:invite** sends an invite link for the bot \n **:userstats <mentioned-user>** will give some info about the mentioned user! \n **:serverstats** gives stats about the server \n **:8ball <question>** answers a question for you! \n **:stab <mentioned-user>** stabs the mentioned user \n **:kick <mentioned-user>** kicks the mentioned user! (Permissions for kicking users required!) \n **:avatar** shows your avatar! \n **:birth** will show the date you have created your account! \n **:userid** shows your user ID \n **:usergame** shows the game you are currently playing \n **:clear** clears 100 messages in the channel. Requires the \"Manage messages\" permission. ");
-	    message.author.sendMessage("__**ModzBot Music Commands**__ \n *Be sure to be in a voice channel first!* \n  **:play-<song>** plays the song! \n **:stop** stops the music \n **List of commands for \`play\`** \n \`play-test\` \n \`play-Electro-light_Throwback\`");
+	  message.author.sendMessage("**ModzBot Commands** \n **:about** sends some info about me in the channel \n **:invite** sends an invite link for the bot \n **:userstats <mentioned-user>** will give some info about the mentioned user! \n **:serverstats** gives stats about the server \n **:8ball <question>** answers a question for you! \n **:stab <mentioned-user>** stabs the mentioned user \n **:kick <mentioned-user>** kicks the mentioned user! (Permissions for kicking users required!) \n **:avatar** shows your avatar! \n **:birth** will show the date you have created your account! \n **:userid** shows your user ID \n **:usergame** shows the game you are currently playing \n **:clear** clears 100 messages in the channel. Requires the \"Manage messages\" permission. \n **:support** will send an invite link to my server. \n **:ban <mentioned-user>** will ban the mentioned user from the server ");
+	    message.author.sendMessage("**ModzBot Music Commands** \n *Be sure to be in a voice channel first!* \n  **:play-<song>** plays the song! \n **:stop** stops the music \n **List of commands for \`play\`** \n \`play-test\` \n \`play-Electro-light_Throwback\`");
   } else
   if (command === "almighy") {
     message.channel.sendMessage("https://www.youtube.com/watch?v=U06jlgpMtQs \n\ https://www.youtube.com/watch?v=_Efb1DAeA34")
@@ -101,9 +101,11 @@ let args = message.content.split(" ").slice(1); //the second word from the users
     message.channel.sendMessage("Server ID: " + message.guild.id); //server ID
   } else
   if (command === "serverstats") { //new serverstats
-    if (message.DMChannel) {
-      message.reply("Go into a server instead and try it again there!")
-    } else {
+    var x = new Boolean(false);
+    if (message.guild === null) { //DM channel
+      message.reply("Go into a server instead and try it again there!") //error message
+      console.log(`${message.createdAt}: ${message.author.username} tried to get serverinfo in a DM channel`) //console error message
+    } else { //continue with Serverstats
       let name = message.guild.id;
       const embed = new Discord.RichEmbed()
         embed.setColor(3447003)
@@ -119,10 +121,10 @@ let args = message.content.split(" ").slice(1); //the second word from the users
         .addField(`• Default Channel`, `${bot.guilds.get(name).defaultChannel}`, true)
         .addField(`• Channels`, `${bot.guilds.get(name).channels.map(c => c.name).join(", ")}`)
         .addField(`• Roles`, `${bot.guilds.get(name).roles.map(r => r.name).join(", ")}`)
-        .setFooter(`Generated on ${date} at ${time}`)
+        .setFooter(`Generated on ${message.createdAt}`)
 
         message.channel.sendEmbed(embed);
-        console.log(`${time}: ${message.author.username} requested serverinfo about ${bot.guilds.get(message.guild.id).name}`)
+        console.log(`${message.createdAt}: ${message.author.username} requested serverinfo about ${bot.guilds.get(message.guild.id).name}`)
     }
 } else //next command
   var answ = ["Yes", "No", "Why?", "Stfu human", "Let's find it out!", "Maybe", "I don't know mate", "Jesus why u asking such difficult questions", "Definately", "Are you fucking serious", "Get the fuck out!", "For sure!", "Kill yourself", "Yes", "No", "Of course!", "Of course not faggot"];
@@ -162,7 +164,7 @@ let args = message.content.split(" ").slice(1); //the second word from the users
     .addField(`• Account created`, `${message.author.createdAt}`, true)
     .addField(`• Status`, `${message.author.presence.status}`, true)
     .addField(`• User ID`, `${message.author.id}`, true)
-    .setFooter(`Generated on ${date} at ${time}`)
+    .setFooter(`Generated on ${message.createdAt}`)
 
     message.channel.sendEmbed(embed);
   } else
@@ -175,11 +177,14 @@ let args = message.content.split(" ").slice(1); //the second word from the users
     .setThumbnail(`http://kuuv.io/i/d035x2P.jpg`)
     .addField(`What am I`, `I am a bot for Discord. I am currently in development. This bot can do many things.`)
     .addField(`Features!`, `I can welcome people in your server! You can ask me questions, let me play music and more!`)
-    .addField(`My website`, `My website, with more information about me and my developer: http://modzon.weebly.com`)
-    .addField(`Commands`, `For a list of all the commands, use the \`help\` command! A command list can also be found on my site`)
-    .setFooter(`send modznoob a joke! Generated on ${date} at ${time}`)
+    .addField(`My website`, `My website, with more information about me and my developer: http://modzon.weebly.com.`)
+    .addField(`Commands`, `For a list of all the commands, use the \`help\` command! A command list can also be found on my site.`)
+    .addField(`Servers`, `I am currently in ${bot.guilds.size} servers!`)
+    .setFooter(`send modznoob a joke! Generated on ${message.createdAt}`)
 
     message.channel.sendEmbed(embed);
+
+    console.log(`${message.createdAt}: ${message.author.username} requested info about me`)
   } else
   if (command === "play-Electro-light_Throwback") {
     const voiceChannel = message.member.voiceChannel;
@@ -205,7 +210,7 @@ let args = message.content.split(" ").slice(1); //the second word from the users
       let userToKick = message.mentions.users.first();
       message.guild.member(userToKick).kick();
       message.reply(`kicked ${message.mentions.users.first()}`);
-      console.log(`${time}: ${message.author.username} kicked ${message.mentions.users.first()}`)
+      console.log(`${message.createdAt}: ${message.author.username} kicked ${message.mentions.users.first()}`)
     }
   } else
   if (command === "userstats") {
@@ -220,11 +225,11 @@ let args = message.content.split(" ").slice(1); //the second word from the users
         .addField(`• Account created`, `${message.author.createdAt}`, true)
         .addField(`• Status`, `${message.author.presence.status}`, true)
         .addField(`• User ID`, `${message.author.id}`, true)
-        .setFooter(`Generated on ${date} at ${time}`)
+        .setFooter(`Generated on ${message.createdAt}`)
 
         message.channel.sendEmbed(embed);
 
-        console.log(`${time}: ${message.author.username} requested userinfo about ${message.author.username}`)
+        console.log(`${message.createdAt}: ${message.author.username} requested userinfo about ${message.author.username}`)
     } else {
       const embed = new Discord.RichEmbed()
         embed.setColor(3447003)
@@ -240,7 +245,7 @@ let args = message.content.split(" ").slice(1); //the second word from the users
 
         message.channel.sendEmbed(embed);
 
-        console.log(`${time}: ${message.author.username} requested userinfo about ${message.mentions.users.first().username}`)
+        console.log(`${message.createdAt}: ${message.author.username} requested userinfo about ${message.mentions.users.first().username}`)
     }
   } else
   if (command === "clear")
@@ -252,7 +257,23 @@ let args = message.content.split(" ").slice(1); //the second word from the users
     } else {
       message.channel.fetchMessages({limit: 100})
         .then(messages => message.channel.bulkDelete(messages));
-      console.log(`${time}: ${message.author.username} used the :clear command`)
+      console.log(`${message.createdAt}: ${message.author.username} used the :clear command`)
+    }
+  } else
+  if (command === "support") {
+    message.reply("Join my Discord server here! https://discord.gg/T2cvH6v")
+  } else
+  if (command === "ban")
+    if(!message.guild.member(bot.user).hasPermission("BAN_MEMBERS")){
+    message.reply("I do not have the right permissions! (Ban Members)");
+    } else {
+    if (!message.member.hasPermission("BAN_MEMBERS")) {
+     message.reply("You do not have the right permissions!");
+    } else {
+      let userToBan = message.mentions.users.first();
+      message.guild.member(userToBan).ban(7);
+      message.reply(`banned ${message.mentions.users.first()}`);
+      console.log(`${message.createdAt}: ${message.author.username} banned ${message.mentions.users.first()}`)
     }
   }
 });
