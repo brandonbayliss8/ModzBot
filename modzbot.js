@@ -1,13 +1,18 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 const ytdl = require('ytdl-core');
+const moment = require("moment");
 const streamOptions = { seek: 0, volume: 1 };
 const key = require("./config.json"); //contains the prefix and bot token
 
-bot.login("[INSERT-TOKEN-HERE]");
+bot.login("<INSERT-TOKEN>");
+
+const now = new Date();
+ const date = moment(now).format("MMM/DD/YYYY"); //month date and year.
+const time = moment(now).format("H:mm:ss");
 
 bot.on("ready", () => {
-  console.log('I am booting faggots!')
+  console.log(`${bot.readyAt}: Ready to serve ${bot.guilds.size} servers!`)
 
 bot.on('guildMemberAdd', member => {
 
@@ -17,6 +22,7 @@ bot.on('guildMemberAdd', member => {
       var msg;
       msg = `Hi ${member}, welcome to ${member.guild.name}!`;
       guild.defaultChannel.sendMessage(msg);
+      console.log(`${member} joined ${member.guild.name}`)
   });
   //Leave message
   bot.on('guildMemberRemove', member => {
@@ -24,8 +30,9 @@ bot.on('guildMemberAdd', member => {
       var msg;
       msg = `Bye ${member}!`;
       guild.defaultChannel.sendMessage(msg);
+      console.log(`${member} left ${member.guild.name}`)
 });
-  bot.user.setGame(`:help :invite | In ${bot.guilds.size} Servers!`);
+  bot.user.setGame(`:help :about | In ${bot.guilds.size} Servers!`);
 });
 
 bot.on("message", (message) => {
@@ -40,14 +47,18 @@ command = command.slice(key.prefix.length); //command is the word connected to t
 let args = message.content.split(" ").slice(1); //the second word from the users command is stored
 
   if (command === "ping") {
-    message.channel.sendMessage( 'Pong' ).then( message => {
-      message.edit( `Can you stfu now please ( ${ message.createdTimestamp - message.editedTimestamp } ms )` );
+    message.channel.sendMessage( 'Kys' ).then( message => {
+      message.edit( `Can you stfu now please ( ${ message.createdTimestamp - message.createdTimestamp } ms )` );
       }
     );
   } else
   if (command === "stab") {
-    message.reply(`perkele сука блять I stabbed ${message.mentions.users.first()}`);
-  } else
+    if (message.mentions.users.first() !== undefined) {
+      message.reply(`perkele сука блять I stabbed ${message.mentions.users.first()}`);
+    } else {
+    message.reply(`perkele сука блять I stabbed someone`);
+  }
+} else
   if (command === "invite") {
     message.reply("Invite me! https://discordapp.com/oauth2/authorize?client_id=297437352127627264&scope=bot&permissions=66321471")
     console.log(`${message.createdAt}: ${message.author.username} requested the bot\'s invite link`)
@@ -201,6 +212,10 @@ let args = message.content.split(" ").slice(1); //the second word from the users
       });
   } else
   if (command === "kick")
+    if (message.guild === null) { //DM channel
+      message.reply("Go into a server instead and try it again there!") //error message
+      console.log(`${message.createdAt}: ${message.author.username} tried to kick someone in a DM channel`) //console error message
+    } else { //continue with command
     if(!message.guild.member(bot.user).hasPermission("KICK_MEMBERS")){
     message.reply("I do not have the right permissions! (Kick Members)");
     } else {
@@ -212,7 +227,8 @@ let args = message.content.split(" ").slice(1); //the second word from the users
       message.reply(`kicked ${message.mentions.users.first()}`);
       console.log(`${message.createdAt}: ${message.author.username} kicked ${message.mentions.users.first()}`)
     }
-  } else
+  }
+} else
   if (command === "userstats") {
     if (message.mentions.users.first() === undefined) {
       const embed = new Discord.RichEmbed()
@@ -241,7 +257,7 @@ let args = message.content.split(" ").slice(1); //the second word from the users
         .addField(`• Account created`, `${message.mentions.users.first().createdAt}`, true)
         .addField(`• Status`, `${message.mentions.users.first().presence.status}`, true)
         .addField(`• User ID`, `${message.mentions.users.first().id}`, true)
-        .setFooter(`Generated on ${date} at ${time}`)
+        .setFooter(`Generated on ${message.createdAt}`)
 
         message.channel.sendEmbed(embed);
 
@@ -249,21 +265,31 @@ let args = message.content.split(" ").slice(1); //the second word from the users
     }
   } else
   if (command === "clear")
+    if (message.guild === null) { //DM channel
+      message.reply("Go into a server instead and try it again there!") //error message
+      console.log(`${message.createdAt}: ${message.author.username} tried to clear messages in a DM channel`) //console error message
+    } else { //continue with command
     if(!message.guild.member(bot.user).hasPermission("MANAGE_MESSAGES")){
       message.reply("Error: I miss the right permissions to do that! (Manage messages)");
     } else {
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
       message.reply("Error: You miss the right permissions to do that!");
     } else {
-      message.channel.fetchMessages({limit: 100})
+      let messagecount = parseInt(args[0]); //args are the
+      message.channel.fetchMessages({limit: messagecount})
         .then(messages => message.channel.bulkDelete(messages));
       console.log(`${message.createdAt}: ${message.author.username} used the :clear command`)
+      }
     }
   } else
   if (command === "support") {
     message.reply("Join my Discord server here! https://discord.gg/T2cvH6v")
   } else
   if (command === "ban")
+    if (message.guild === null) { //DM channel
+      message.reply("Go into a server instead and try it again there!") //error message
+      console.log(`${message.createdAt}: ${message.author.username} tried to ban someone in a DM channel`) //console error message
+    } else { //continue with command
     if(!message.guild.member(bot.user).hasPermission("BAN_MEMBERS")){
     message.reply("I do not have the right permissions! (Ban Members)");
     } else {
@@ -274,6 +300,16 @@ let args = message.content.split(" ").slice(1); //the second word from the users
       message.guild.member(userToBan).ban(7);
       message.reply(`banned ${message.mentions.users.first()}`);
       console.log(`${message.createdAt}: ${message.author.username} banned ${message.mentions.users.first()}`)
+      }
     }
+  } else
+  if (command === "announcement")
+    if(message.author.id != "264331473308483584") {
+      message.reply(`You don\'t have permission to do that!`)
+      console.log(`${message.createdAt}: ${message.author.username} tried to use the announcement command`)
+    } else {
+    var announcement = args.join(" ")
+    console.log(`${message.createdAt}: Announcement: ` + announcement);
+    bot.guilds.forEach(guild => { guild.defaultChannel.sendMessage(announcement) });
   }
 });
