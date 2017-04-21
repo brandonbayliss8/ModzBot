@@ -1,8 +1,8 @@
 {
-  "name": "package",
+  "name": "modzbot",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Discord bot",
+  "main": "modzbot.js",
   "scripts": {
     "start": "node modzbot.js"
   },
