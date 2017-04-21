@@ -19,18 +19,30 @@ bot.on('guildMemberAdd', member => {
     let guildid = member.guild.id;
 
          let guild = member.guild;
+         const embed = new Discord.RichEmbed()
+           embed.setColor('#00CE00')
+           .setAuthor(`Join log`)
+           .setDescription(`**${member}** joined **${guild}**`)
+
       var msg;
       msg = `Hi ${member}, welcome to ${member.guild.name}!`;
       guild.defaultChannel.sendMessage(msg);
       console.log(`${member} joined ${member.guild.name}`)
+      bot.channels.get("305057938567987200").sendEmbed(embed);
   });
   //Leave message
   bot.on('guildMemberRemove', member => {
     let guild = member.guild;
-      var msg;
-      msg = `Bye ${member}!`;
-      guild.defaultChannel.sendMessage(msg);
-      console.log(`${member} left ${member.guild.name}`)
+    const embed = new Discord.RichEmbed()
+      embed.setColor('#CE0000')
+      .setAuthor(`Join log`)
+      .setDescription(`**${member}** left **${guild}**`)
+
+    var msg;
+    msg = `Bye ${member}!`;
+    guild.defaultChannel.sendMessage(msg);
+    console.log(`${member} left ${member.guild.name}`)
+    bot.channels.get("305057938567987200").sendEmbed(embed);
 });
   bot.user.setGame(`:help :about | In ${bot.guilds.size} Servers!`);
 });
@@ -71,7 +83,7 @@ let args = message.content.split(" ").slice(1); //the second word from the users
   } else
   if (command === "help") {
     message.reply("Check your DM's for help!")
-	  message.author.sendMessage("**ModzBot Commands** \n **:about** sends some info about me in the channel \n **:invite** sends an invite link for the bot \n **:userstats <mentioned-user>** will give some info about the mentioned user! \n **:serverstats** gives stats about the server \n **:8ball <question>** answers a question for you! \n **:stab <mentioned-user>** stabs the mentioned user \n **:kick <mentioned-user>** kicks the mentioned user! (Permissions for kicking users required!) \n **:avatar** shows your avatar! \n **:birth** will show the date you have created your account! \n **:userid** shows your user ID \n **:usergame** shows the game you are currently playing \n **:clear** clears 100 messages in the channel. Requires the \"Manage messages\" permission. \n **:support** will send an invite link to my server. \n **:ban <mentioned-user>** will ban the mentioned user from the server ");
+	  message.author.sendMessage("**ModzBot Commands** \n **:about** sends some info about me in the channel \n **:invite** sends an invite link for the bot \n **:userstats <mentioned-user>** will give some info about the mentioned user! \n **:serverstats** gives stats about the server \n **:8ball <question>** answers a question for you! \n **:stab <mentioned-user>** stabs the mentioned user \n **:kick <mentioned-user>** kicks the mentioned user! (Permissions for kicking users required!) \n **:avatar** shows your avatar! \n **:birth** will show the date you have created your account! \n **:userid** shows your user ID \n **:usergame** shows the game you are currently playing \n **:clear <messageamount>** clears an amount of messages in the channel. Requires the \"Manage messages\" permission. \n **:support** will send an invite link to my server. \n **:ban <mentioned-user>** will ban the mentioned user from the server \n **:reportbug <bug>** will report the bug to my developer!");
 	    message.author.sendMessage("**ModzBot Music Commands** \n *Be sure to be in a voice channel first!* \n  **:play-<song>** plays the song! \n **:stop** stops the music \n **List of commands for \`play\`** \n \`play-test\` \n \`play-Electro-light_Throwback\`");
   } else
   if (command === "almighy") {
@@ -297,9 +309,15 @@ let args = message.content.split(" ").slice(1); //the second word from the users
      message.reply("You do not have the right permissions!");
     } else {
       let userToBan = message.mentions.users.first();
+      const embed = new Discord.RichEmbed()
+        embed.setColor('#CE0000')
+        .setTitle(`Admin log` , `From ${message.guild.name}`)
+        .setDescription(`**${message.author.username}** banned **` + userToBan + `** from **${message.guild.name}**`)
+        .setFooter(`Generated on ${message.createdAt}`)
       message.guild.member(userToBan).ban(7);
       message.reply(`banned ${message.mentions.users.first()}`);
       console.log(`${message.createdAt}: ${message.author.username} banned ${message.mentions.users.first()}`)
+      bot.channels.get("305057972755759104").sendEmbed(embed);
       }
     }
   } else
@@ -311,5 +329,16 @@ let args = message.content.split(" ").slice(1); //the second word from the users
     var announcement = args.join(" ")
     console.log(`${message.createdAt}: Announcement: ` + announcement);
     bot.guilds.forEach(guild => { guild.defaultChannel.sendMessage(announcement) });
+  } else
+  if (command === "reportbug")
+    if (message.guild !== null) {
+      var output = args.join(" ");
+
+      bot.channels.get("301421032210956289").sendMessage("Bug report from " + "**" + message.member.guild.name + "**" + "```\n" + output + "\n```");
+
+    message.channel.sendMessage("Bug reported! For more support, join my Discord server: https://discord.gg/T2cvH6v");
+    console.log(`${message.createdAt}: ${message.member.guild.name} reported a bug`)
+  } else {
+    message.reply("Try it again in a server!")
   }
 });
