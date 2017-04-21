@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node modzbot.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.0.0"
+    "discord.js": "^11.0.0",
+    "ytdl-core":  "^0.11.2",
+    "moment": "2.18.1"
   }
 }
