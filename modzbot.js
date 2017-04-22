@@ -13,7 +13,29 @@ const time = moment(now).format("H:mm:ss");
 
 bot.on("ready", () => {
   console.log(`${bot.readyAt}: Ready to serve ${bot.guilds.size} servers!`)
+});
 
+bot.on("error", console.error);
+bot.on('guildCreate', Guild => {
+  let toSend = [
+ "I am added to: " + Guild.name,
+  "Guild ID: " + Guild.id,
+  "Guild Members Count: " + Guild.memberCount,
+  "Guild Region: " + Guild.region
+];
+
+bot.channels.get("305383689464971264").sendMessage(toSend);
+});
+bot.on('guildDelete', Guild => {
+  let toSend = [
+    "I am removed from: " + Guild.name,
+    "Guild ID: " + Guild.id,
+"Guild Members Count: " + Guild.memberCount,
+  "Guild Region: " + Guild.region
+];
+
+bot.channels.get("305383689464971264").sendMessage(toSend);
+});
 bot.on('guildMemberAdd', member => {
 
     let guildid = member.guild.id;
