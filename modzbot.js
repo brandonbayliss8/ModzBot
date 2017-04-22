@@ -5,7 +5,7 @@ const moment = require("moment");
 const streamOptions = { seek: 0, volume: 1 };
 const key = require("./config.json"); //contains the prefix and bot token
 
-bot.login(PROCESS.ENV.Token);
+bot.login(`PROCESS.ENV.Token`);
 
 const now = new Date();
  const date = moment(now).format("MMM/DD/YYYY"); //month date and year.
