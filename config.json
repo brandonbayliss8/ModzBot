@@ -1,4 +1,4 @@
 {
   "prefix" : ":",
-  "token" : PROCESS.ENV.Token
+  "token" : `PROCESS.ENV.Token`
 }
