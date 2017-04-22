@@ -28,7 +28,7 @@ bot.on('guildMemberAdd', member => {
       msg = `Hi ${member}, welcome to ${member.guild.name}!`;
       guild.defaultChannel.sendMessage(msg);
       console.log(`${member} joined ${member.guild.name}`)
-      bot.channels.get("305057938567987200").sendEmbed(embed);
+      //bot.channels.get("305057938567987200").sendEmbed(embed);
   });
   //Leave message
   bot.on('guildMemberRemove', member => {
@@ -42,7 +42,7 @@ bot.on('guildMemberAdd', member => {
     msg = `Bye ${member}!`;
     guild.defaultChannel.sendMessage(msg);
     console.log(`${member} left ${member.guild.name}`)
-    bot.channels.get("305057938567987200").sendEmbed(embed);
+    //bot.channels.get("305057938567987200").sendEmbed(embed);
 });
   bot.user.setGame(`:help :about | In ${bot.guilds.size} Servers!`);
 });
