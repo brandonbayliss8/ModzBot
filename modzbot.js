@@ -64,7 +64,7 @@ bot.on('guildMemberAdd', member => {
     console.log(`${member} left ${member.guild.name}`)
     //bot.channels.get("305057938567987200").sendEmbed(embed);
 });
-  bot.user.setGame(`:help :about | In ${bot.guilds.size} Servers!`);
+  bot.user.setGame(`::help ::about | In ${bot.guilds.size} Servers!`);
 });
 
 bot.on("message", (message) => {
