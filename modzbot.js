@@ -345,11 +345,11 @@ let args = message.content.split(" ").slice(1); //the second word from the users
     message.reply(rps[Math.floor(Math.random() * rps.length)]);
   } else
   if (command === "red")
-    if(!message.guild.member(bot.user).hasPermission("MANAGE_GUILD")){
-      message.reply("I do not have permissions(Manage Roles) to do that!");
-    } else {
     if (message.guild === null) { //DM channel
       message.reply("Go into a server instead and try it again there!") //error message
+    } else {
+    if(!message.guild.member(bot.user).hasPermission("MANAGE_GUILD")){
+      message.reply("I do not have permissions(Manage Roles) to do that!");
     } else {
       let rolename = args.join(" ");
       let member = message.guild.member(message.author);
@@ -362,11 +362,11 @@ let args = message.content.split(" ").slice(1); //the second word from the users
     }
   } else
   if (command === "green")
-    if(!message.guild.member(bot.user).hasPermission("MANAGE_GUILD")){
-      message.reply("I do not have permissions(Manage Roles) to do that!");
-    } else {
     if (message.guild === null) { //DM channel
       message.reply("Go into a server instead and try it again there!") //error message
+    } else {
+    if(!message.guild.member(bot.user).hasPermission("MANAGE_GUILD")){
+      message.reply("I do not have permissions(Manage Roles) to do that!");
     } else {
       let rolename = args.join(" ");
       let member = message.guild.member(message.author);
@@ -379,11 +379,11 @@ let args = message.content.split(" ").slice(1); //the second word from the users
     }
   } else
   if (command === "blue")
-    if(!message.guild.member(bot.user).hasPermission("MANAGE_GUILD")){
-      message.reply("I do not have permissions(Manage Roles) to do that!");
-    } else {
     if (message.guild === null) { //DM channel
       message.reply("Go into a server instead and try it again there!") //error message
+    } else {
+    if(!message.guild.member(bot.user).hasPermission("MANAGE_GUILD")){
+      message.reply("I do not have permissions(Manage Roles) to do that!");
     } else {
       let rolename = args.join(" ");
       let member = message.guild.member(message.author);
