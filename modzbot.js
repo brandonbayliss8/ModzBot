@@ -103,7 +103,8 @@ let args = message.content.split(" ").slice(1); //the second word from the users
   } else
   if (command === "help") {
     message.reply("Check your DM's for help!")
-	  message.author.sendMessage("**ModzBot Commands** \n **::about** sends some info about me in the channel \n **::invite** sends an invite link for the bot \n **::userstats <mentioned-user>** will give some info about the mentioned user! \n **::serverstats** gives stats about the server \n **::8ball <question>** answers a question for you! \n **::stab <mentioned-user>** stabs the mentioned user \n **::kick <mentioned-user>** kicks the mentioned user! (Permissions for kicking users required!) \n **::avatar** shows your avatar! \n **::birth** will show the date you have created your account! \n **::userid** shows your user ID \n **::usergame** shows the game you are currently playing \n **::clear <messageamount>** clears an amount of messages in the channel. Requires the \"Manage messages\" permission. \n **::support** will send an invite link to my server. \n **::ban <mentioned-user>** will ban the mentioned user from the server \n **::bugreport <bug>** will report the bug to my developer!");
+	  message.author.sendMessage("**ModzBot Commands** \n **::about** sends some info about me in the channel \n **::invite** sends an invite link for the bot \n **::userstats <mentioned-user>** will give some info about the mentioned user! \n **::serverstats** gives stats about the server \n **::8ball <question>** answers a question for you! \n **::stab <mentioned-user>** stabs the mentioned user \n **::kick <mentioned-user>** kicks the mentioned user! (Permissions for kicking users required!) \n **::avatar** shows your avatar! \n **::birth** will show the date you have created your account! \n **::userid** shows your user ID \n **::usergame** shows the game you are currently playing \n **::clear <messageamount>** clears an amount of messages in the channel. Requires the \"Manage messages\" permission. \n **::support** will send an invite link to my server. \n **::ban <mentioned-user>** will ban the mentioned user from the server \n **::bugreport <bug>** will report the bug to my developer! \n **::interact** will make the bot interact with you! \n **::randomcommand** will give a random command! (Not all commands) \n **::rockpaperscissors** gives a random answer! The classic rock, paper and scissors (in development)");
+	  message.author.sendMessage("**ModzBot Role Commands** \n All these commands will give a custom color to your username in a server! Currently in testing stage! \n **::red** \n **::green** \n **::blue**");
   } else
   if (command === "almighy") {
     message.channel.sendMessage("https://www.youtube.com/watch?v=U06jlgpMtQs \n\ https://www.youtube.com/watch?v=_Efb1DAeA34")
@@ -200,6 +201,7 @@ let args = message.content.split(" ").slice(1); //the second word from the users
     .addField(`My website`, `My website, with more information about me and my developer: http://modzon.weebly.com.`)
     .addField(`Commands`, `For a list of all the commands, use the \`help\` command! A command list can also be found on my site.`)
     .addField(`Servers`, `I am currently in ${bot.guilds.size} servers!`)
+    .addField(`Bot version`, `Version 1.0.0`)
     .setFooter(`send modznoob a joke! Generated on ${message.createdAt}`)
 
     message.channel.sendEmbed(embed);
@@ -323,5 +325,53 @@ let args = message.content.split(" ").slice(1); //the second word from the users
     console.log(`${message.createdAt}: ${message.member.guild.name} reported a bug`)
   } else {
     message.reply("Try it again in a server!")
+  } else //INTERACTIVE PART
+  if (command === "interact") {
+    message.reply("Hello, what is your name?")
+    message.channel.sendMessage(`*Type \`::mynameis <yourname>\`*`)
+  } else
+  if (command === "mynameis") {
+  var name = args.join(" ");
+
+    message.reply(`Hi, ` + name )
+    message.channel.sendMessage(`*Use \`::help\` what I can do for you! For a random command, use \`::randomcommand\`.*`)
+  } else //END OF INTERACTIVE PART
+  var comm = ["\`::rockpaperscissors\`", "\`::8ball <question>\`", "\`::stab\`", "\`::about\`", "\`::usergame\`"]
+  if (command === "randomcommand") {
+    message.reply("Here is a command for you!" + comm[Math.floor(Math.random() * comm.length)]);
+  } else
+  var rps = ["Rock", "Paper", "Scissors"]
+  if (command === "rockpaperscissors") {
+    message.reply(rps[Math.floor(Math.random() * rps.length)]);
+  } else
+  if (command === "red") {
+    let rolename = args.join(" ");
+    let member = message.guild.member(message.author);
+    let guild = message.member.guild;
+  guild.createRole({ name: "Red", color: "#FF0000" })
+  .then(role => {
+    member.addRole(role).catch(console.error);
+    message.reply("Role added");
+    })
+  } else
+  if (command === "green") {
+    let rolename = args.join(" ");
+    let member = message.guild.member(message.author);
+    let guild = message.member.guild;
+  guild.createRole({ name: "Green", color: "#00ff00" })
+  .then(role => {
+    member.addRole(role).catch(console.error);
+    message.reply("Role added");
+    })
+  } else
+  if (command === "blue") {
+    let rolename = args.join(" ");
+    let member = message.guild.member(message.author);
+    let guild = message.member.guild;
+  guild.createRole({ name: "Blue", color: "#0000ff" })
+  .then(role => {
+    member.addRole(role).catch(console.error);
+    message.reply("Role added");
+    })
   }
 });
