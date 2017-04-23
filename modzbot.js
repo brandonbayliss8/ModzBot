@@ -104,7 +104,6 @@ let args = message.content.split(" ").slice(1); //the second word from the users
   if (command === "help") {
     message.reply("Check your DM's for help!")
 	  message.author.sendMessage("**ModzBot Commands** \n **::about** sends some info about me in the channel \n **::invite** sends an invite link for the bot \n **::userstats <mentioned-user>** will give some info about the mentioned user! \n **::serverstats** gives stats about the server \n **::8ball <question>** answers a question for you! \n **::stab <mentioned-user>** stabs the mentioned user \n **::kick <mentioned-user>** kicks the mentioned user! (Permissions for kicking users required!) \n **::avatar** shows your avatar! \n **::birth** will show the date you have created your account! \n **::userid** shows your user ID \n **::usergame** shows the game you are currently playing \n **::clear <messageamount>** clears an amount of messages in the channel. Requires the \"Manage messages\" permission. \n **::support** will send an invite link to my server. \n **::ban <mentioned-user>** will ban the mentioned user from the server \n **::bugreport <bug>** will report the bug to my developer!");
-	    message.author.sendMessage("**ModzBot Music Commands** \n *Be sure to be in a voice channel first!* \n  **::play-<song>** plays the song! \n **::stop** stops the music \n **List of commands for \`play\`** \n \`play-test\` \n \`play-Electro-light_Throwback\`");
   } else
   if (command === "almighy") {
     message.channel.sendMessage("https://www.youtube.com/watch?v=U06jlgpMtQs \n\ https://www.youtube.com/watch?v=_Efb1DAeA34")
@@ -174,28 +173,6 @@ let args = message.content.split(" ").slice(1); //the second word from the users
   if (command === "8ball") {
     message.channel.sendMessage(answ[Math.floor(Math.random() * answ.length)]);
   } else
-  if (command === "play-test") {
-    const voiceChannel = message.member.voiceChannel;
-    if (!voiceChannel) {
-      return message.reply(`Please be in a voice channel first!`);
-    }
-    voiceChannel.join()
-      .then(connnection => {
-        let stream = ytdl("https://www.youtube.com/watch?v=U06jlgpMtQs", {audioonly: true});
-        const dispatcher = connnection.playStream(stream);
-        dispatcher.on('end', () => {
-          voiceChannel.leave();
-        });
-      });
-  } else
-  if (command === "stop") {
-    const voiceChannel = message.member.voiceChannel;
-    if (!voiceChannel) {
-      return message.reply(`You are not in a Voice Channel, be sure to join one first and be sure to check if I am playing something!`)
-    } else {
-      voiceChannel.leave();
-    }
-  } else
   if (command === "userstats-old") {
   const embed = new Discord.RichEmbed()
     embed.setColor(3447003)
@@ -228,20 +205,6 @@ let args = message.content.split(" ").slice(1); //the second word from the users
     message.channel.sendEmbed(embed);
 
     console.log(`${message.createdAt}: ${message.author.username} requested info about me`)
-  } else
-  if (command === "play-Electro-light_Throwback") {
-    const voiceChannel = message.member.voiceChannel;
-    if (!voiceChannel) {
-      return message.reply(`Please be in a voice channel first!`);
-    }
-    voiceChannel.join()
-      .then(connnection => {
-        let stream = ytdl("https://www.youtube.com/watch?v=cXLadJlS_nA", {audioonly: true});
-        const dispatcher = connnection.playStream(stream);
-        dispatcher.on('end', () => {
-          voiceChannel.leave();
-        });
-      });
   } else
   if (command === "kick")
     if (message.guild === null) { //DM channel
