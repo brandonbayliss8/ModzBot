@@ -396,3 +396,6 @@ let args = message.content.split(" ").slice(1); //the second word from the users
     }
   }
 });
+process.on("unhandledRejection", err => {
+  console.error("Uncaught Promise Error: \n" + err.stack);
+});
