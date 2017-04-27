@@ -2,6 +2,10 @@
   "name": "modzbot",
   "version": "1.0.0",
   "description": "Discord bot",
+  "engines": {
+    "node": "6.5.0",
+    "npm": "3.10.6"
+  },
   "main": "modzbot.js",
   "scripts": {
     "start": "node modzbot.js"
