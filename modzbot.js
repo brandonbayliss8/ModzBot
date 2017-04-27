@@ -14,6 +14,7 @@ const time = moment(now).format("H:mm:ss");
 bot.on("ready", () => {
   console.log(`${bot.readyAt}: Ready to serve ${bot.guilds.size} servers!`)
   bot.user.setGame(`::help ::about | In ${bot.guilds.size} Servers!`);
+});
 
 bot.on('guildCreate', Guild => {
   let toSend = [
