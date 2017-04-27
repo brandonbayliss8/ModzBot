@@ -5,14 +5,13 @@ const moment = require("moment");
 const streamOptions = { seek: 0, volume: 1 };
 const key = require("./config.json"); //contains the prefix and bot token
 
-bot.login(process.env.Token);
-
 const now = new Date();
  const date = moment(now).format("MMM/DD/YYYY"); //month date and year.
 const time = moment(now).format("H:mm:ss");
 
 bot.on("ready", () => {
   console.log(`${bot.readyAt}: Ready to serve ${bot.guilds.size} servers!`)
+  bot.user.setGame(`::help ::about | In ${bot.guilds.size} Servers!`);
 
 bot.on('guildCreate', Guild => {
   let toSend = [
@@ -64,14 +63,12 @@ bot.on('guildMemberAdd', member => {
     console.log(`${member} left ${member.guild.name}`)
     //bot.channels.get("305057938567987200").sendEmbed(embed);
 });
-  bot.user.setGame(`::help ::about | In ${bot.guilds.size} Servers!`);
-});
 
 bot.on("message", (message) => {
 
-  if (!message.content.startsWith(key.prefix)) return;
+  if (!message.content.startsWith(key.prefix)) return; //ignore messages without prefix
 
-  if (message.author.bot) return;
+  if (message.author.bot) return; //ignores other bots
 
   let command = message.content.split(" ")[0]; //splits the message to read different arguments from the user
 command = command.slice(key.prefix.length); //command is the word connected to the prefix
@@ -399,3 +396,5 @@ let args = message.content.split(" ").slice(1); //the second word from the users
 process.on("unhandledRejection", err => {
   console.error("Uncaught Promise Error: \n" + err.stack);
 });
+	
+bot.login(process.env.Token);
