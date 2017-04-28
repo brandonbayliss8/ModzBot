@@ -1,4 +1,3 @@
-const Discord = require("discord.js");
 exports.run = (bot, message, args) => {
   if (message.guild === null) { //DM channel
       message.reply("Go into a server instead and try it again there!") //error message
