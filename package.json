@@ -1,6 +1,6 @@
 {
   "name": "modzbot",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Discord bot",
   "engines": {
     "node": "6.5.0",
