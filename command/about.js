@@ -11,7 +11,7 @@ exports.run = (bot, message, args) => {
       .addField(`My website`, `My website, with more information about me and my developer: http://modzon.weebly.com.`)
       .addField(`Commands`, `For a list of all the commands, use the \`help\` command! A command list can also be found on my site.`)
       .addField(`Servers`, `I am currently in ${bot.guilds.size} servers!`)
-      .addField(`Bot version`, `Version 1.0.0`)
+      .addField(`Bot version`, `Version 1.1.0`)
       .setFooter(`send modznoob a joke! Generated on ${message.createdAt}`)
 
       message.channel.sendEmbed(embed);
