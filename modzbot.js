@@ -28,8 +28,11 @@ fs.readdir("./events/", (err, files) => {
 });
 
 bot.on("message", message => {
-  if (message.author.bot) return;
-  if (!message.content.startsWith(config.prefix)) return;
+  if (message.channel.type === "dm") return; //ignore dm's
+
+  if (message.author.bot) return; //ignore bot users
+
+  if (!message.content.startsWith(config.prefix)) return; //ignore messages without prefix
 
   let command = message.content.split(" ")[0];
   command = command.slice(config.prefix.length);
@@ -41,6 +44,7 @@ bot.on("message", message => {
     let cmd = require(`./command/${command}.js`);
     cmd.run(bot, message, args);
   } catch (err) {
+    if (err.code === "MODULE_NOT_FOUND") return;
     console.error(err);
   }
 });
@@ -51,6 +55,7 @@ bot.on("ready", () => {
 });
 
 bot.on('guildCreate', Guild => {
+
   let toSend = [
  "I've been invited to " + "\**" + Guild.name + "\**",
   "Guild ID: " + "\**" + Guild.id + "\**",
@@ -58,7 +63,15 @@ bot.on('guildCreate', Guild => {
   "Guild Region: " + "\**" + Guild.region + "\**"
 ];
 
+  let welcome = [
+ "Hello! I am **ModzBot**!",
+  "Thank you for adding me on your server!",
+  "For a list of commands, use the command \`::help\`.",
+  "If you need info about me, use the \`::about\` command."
+];
+
 bot.channels.get("305383689464971264").sendMessage(toSend);
+console.log(`I\'ve been added to ` + Guild.name + `.`);
 });
 bot.on('guildDelete', Guild => {
   let toSend = [
