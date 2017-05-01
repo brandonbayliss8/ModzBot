@@ -1,3 +1,4 @@
+const Discord = require("Discord.js");
 exports.run = (bot, message, args) => {
   if(message.author.id != "264331473308483584") {
       message.reply(`You don\'t have permission to do that!`)
