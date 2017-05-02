@@ -1,6 +1,7 @@
 const fs = require("fs");
 exports.run = (bot, message, args) => {
    if(message.author.id != "264331473308483584") return;
+  if (!args[0]) return message.reply("You haven\'t specified a command");
   if (args[0] === "all") {
     message.reply("Reloading all commands");
     bot.functions.core.loadCommands(bot);
