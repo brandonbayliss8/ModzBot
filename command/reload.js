@@ -2,7 +2,7 @@ const fs = require("fs");
 exports.run = (bot, message, args) => {
    if(message.author.id != "264331473308483584") return;
   if (args[0] === "all") {
-    bot.log("Reloading all commands");
+    message.reply("Reloading all commands");
     bot.functions.core.loadCommands(bot);
     return;
   }
