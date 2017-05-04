@@ -15,7 +15,7 @@ exports.run = (bot, message, args) => {
       .setDescription(`${quotes[randomNumber]}`)
       .setThumbnail(`http://kuuv.io/i/d035x2P.jpg`)
       .addField(`Lib`, `Discord.js (Javascript)`, true)
-      .addField(`Version`, `1.1.0`, true)
+      .addField(`Version`, `1.2.1`, true)
       .addField(`Uptime`, `${duration}`, true)
       .addField(`Memory`, `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
       .addField(`Users`, `${bot.users.size.toLocaleString()}`, true)
