@@ -1,4 +1,11 @@
+const help = require("../data/helpmsg.json");
 exports.run = (bot, message, args) => {
-  message.reply("Check your DM's for help!")
-  message.author.sendMessage(`**ModzBot Commands** \n **::about** sends some info about me in the channel \n **::invite** sends an invite link for the bot \n **::userstats <mentioned-user>** will give some info about the mentioned user! \n **::serverstats** gives stats about the server \n **::8ball <question>** answers a question for you! \n **::stab <mentioned-user>** stabs the mentioned user \n **::kick <mentioned-user>** kicks the mentioned user! (Permissions for kicking users required!) \n **::avatar** shows your avatar! \n **::birth** will show the date you have created your account! \n **::userid** shows your user ID \n **::usergame** shows the game you are currently playing \n **::clear <messageamount>** clears an amount of messages in the channel. Requires the \"Manage messages\" permission. \n **::support** will send an invite link to my server. \n **::ban <mentioned-user>** will ban the mentioned user from the server \n **::bugreport <bug>** will report the bug to my developer! \n **::interact** will make the bot interact with you! \n **::randomcommand** will give a random command! (Not all commands) \n **::rockpaperscissors** gives a random answer! The classic rock, paper and scissors (in development)`);
-}
+  message.author.sendMessage(help.helpmsg1);
+          setTimeout(() => {
+              message.author.sendMessage(help.helpmsg2);
+          }, 250);
+          setTimeout(() => {
+              message.author.sendMessage(help.helpmsg3);
+          }, 500);
+          message.reply(`Check your DMs for help!`);
+  }
