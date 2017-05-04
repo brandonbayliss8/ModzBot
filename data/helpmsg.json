@@ -1,0 +1,47 @@
+{
+  "helpmsg1":
+  [
+    "__**ModzBot Help**__",
+    "The prefix for every command is `::`.",
+	"If you need more help, you can join my Discord server by using the `::support` command!",
+	"`::8ball` answers your question",
+	"`::about` shows info about me",
+	"`::avatar` shows your avatar",
+	"`::ban` bans the __mentioned__ user from the guild",
+	"`::birth` shows when you have created your Discord account",
+	"`::bugreport` reports a bug to my developer",
+	"`::clear` clears an amount of messages in the channel",
+	"`::help` shows this help message",
+	"`::invite` sends my invite link",
+	"`::kick` kicks the __mentioned__ user",
+	"`::love` shows how many love there is between the user and the mentioned parameter",
+	"`::memedog` sends the Memedog in the current channel",
+	"`::ping` pong!",
+	"`::rockpaperscissors` Rock, Paper or Scissors!",
+	"`::roll` generates a random number between 1 and 100/ 1 and the given parameter",
+	"`::serverstats` shows info about the current server",
+	"`::stab` stabs the mentioned user",
+	"`::stats` shows some stats about me",
+	"`::suggest` sends a suggestion to my developer",
+	"`::support` sends the invite link to my own Server!",
+	"`::usergame` shows which game you are playing",
+	"`::userid` shows your user ID",
+	"`::userstats` shows some info about you/the mentioned user",
+	"`::userstatus` shows the status of you (online, idle, do not disturb, offline/invisible)"
+  ],
+  "helpmsg2":
+  [
+    "**__ModzBot Music commands__**",
+	"__Note: To run these commands, you have to be in a voice channel first!",
+	"`::play` plays the YouTube URL in the voice channel",
+	"`::stop` stops the playback of the YouTube URL"
+  ],
+  "helpmsg3":
+  [
+    "**__ModzBot Admin commands__**",
+	"__Do not forget you'll need the right permissions to run the commands!__",
+	"`::ban` bans the __mentioned__ user from the guild",
+	"`::clear` clears an amount of messages in the channel",
+	"`::kick` kicks the __mentioned__ user"
+  ]
+}
