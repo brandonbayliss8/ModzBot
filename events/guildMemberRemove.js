@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+/*const Discord = require("discord.js");
 exports.run = (bot, member) => {
   //Leave message
   bot.on('guildMemberRemove', member => {
