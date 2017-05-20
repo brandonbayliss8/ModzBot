@@ -1,13 +1,14 @@
 const Discord = require("discord.js");
-const bot = new Discord.Client();
-const ytdl = require('ytdl-core');
-const moment = require("moment");
-const streamOptions = { seek: 0, volume: 1 };
-const config = require("./config.json"); //contains the prefix and bot token
-const fs = require("fs");
-const TOKEN = process.env.TOKEN;
-const prefix = "::";
-// Load the contents of the `/command/` folder and each file in it.
+      bot = new Discord.Client();
+      ytdl = require('ytdl-core');
+      moment = require("moment");
+      streamOptions = { seek: 0, volume: 1 };
+      config = require("./config.json"); //contains the prefix and bot token
+      fs = require("fs");
+      devs = "264331473308483584"
+      prefix = ":";
+      TOKEN = process.env.TOKEN;
+
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {
