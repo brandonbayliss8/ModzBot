@@ -1,6 +1,4 @@
-const fs = require("fs");
-      moment = require("moment");
-      data = JSON.parse(fs.readFileSync('../data/data.json', 'utf8')),
+const moment = require("moment");
       now = new Date();
       date = moment(now).format("MMM/DD/YYYY");
       time = moment(now).format("H:mm:ss");
@@ -8,23 +6,6 @@ exports.run = (bot, message, args) => {
   if (!args[0]) return;
   let command = args[0].toLowerCase();
   args = args.join(" ").substring(command.length + 1);
-  /*if (command === "welcome") {
-
-    function enableJoinmessage() {
-        if (!data[message.guild.id]) data[message.guild.id] = {
-            joinMessage: "disabled"
-        };
-        data[message.guild.id].joinMessage = "enabled";
-        let updateValue = JSON.stringify(data, null, 2);
-        fs.writeFileSync('./data/data.json', updateValue);
-        message.reply(":white_check_mark: Welcome message enabled.");
-    }
-    if (message.channel.guild.ownerID === message.author.id) {
-        enableJoinmessage();
-    } else {
-        enableJoinmessage();
-    }
-  } else {*/
   if (command === "logs")
   message.reply(`Would you like to enable the logs?\n*This will be canceled in 10 seconds. Type \`yes\` or \`no\`.*`).then(() => {
     message.channel.awaitMessages(m => m.author.id === message.author.id && ['yes', 'no'].includes(m.content), {time: 10000, maxMatches: 1})
