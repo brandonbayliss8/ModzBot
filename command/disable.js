@@ -1,5 +1,5 @@
 const fs = require("fs");
-      data = JSON.parse(fs.readFileSync('./data/data.json', 'utf8')),
+      data = JSON.parse(fs.readFileSync('../data/data.json', 'utf8')),
 exports.run = (bot, message, args) => {
   if (!args[0]) return;
   let command = args[0].toLowerCase();
