@@ -19,7 +19,7 @@ exports.run = (bot, message, args) => {
       .then(log => {
             setTimeout(() => {
                 let everyone = message.guild.roles.get(`297442085861064705`);
-                log.sendMessage("You have enabled the moderator logs.");
+                log.sendMessage("You have enabled the moderator logs. To disable this, use the `::disable logs` command");
                 log.overwritePermissions(`297442085861064705`, {
                 SEND_MESSAGES: false
                 })
