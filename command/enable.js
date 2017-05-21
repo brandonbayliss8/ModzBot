@@ -1,4 +1,6 @@
-const moment = require("moment");
+const fs = require("fs");
+      moment = require("moment");
+      data = JSON.parse(fs.readFileSync('./data/data.json', 'utf8')),
       now = new Date();
       date = moment(now).format("MMM/DD/YYYY");
       time = moment(now).format("H:mm:ss");
@@ -11,16 +13,16 @@ exports.run = (bot, message, args) => {
     message.channel.awaitMessages(m => m.author.id === message.author.id && ['yes', 'no'].includes(m.content), {time: 10000, maxMatches: 1})
     .then(collected => {
     if (!collected.size) {
-    return;
+    return message.reply(`You didn't say \`yes\` or \`no\` in time!`);
   } else if (collected.first().content.toLowerCase() === 'yes') {
     message.channel.sendMessage(`Creating the log channel...`);
     console.log(`${date} at ${time}: ${message.author.username} enabled the logs in ${message.guild.name}.`);
     message.guild.createChannel("mod-log", "text")
       .then(log => {
             setTimeout(() => {
-                let everyone = message.guild.roles.get(`297442085861064705`);
-                log.sendMessage("You have enabled the moderator logs. To disable this, use the `::disable logs` command");
-                log.overwritePermissions(`297442085861064705`, {
+                let everyone = message.guild.id;
+                log.sendMessage("You have enabled the moderator logs. To disable this, use the `::disable logs` command.");
+                log.overwritePermissions(`${everyone}`, {
                 SEND_MESSAGES: false
                 })
             }, 2500);
