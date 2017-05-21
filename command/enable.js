@@ -1,6 +1,5 @@
 const fs = require("fs");
       moment = require("moment");
-      data = JSON.parse(fs.readFileSync('../data/data.json', 'utf8')),
       now = new Date();
       date = moment(now).format("MMM/DD/YYYY");
       time = moment(now).format("H:mm:ss");
