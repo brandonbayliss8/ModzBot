@@ -22,5 +22,6 @@ exports.run = (bot, message, args) => {
     .setFooter(`Warned on ${date}, at ${time}`)
 
   log.sendEmbed(embed);
+  message.reply(`User (**${message.mentions.users.first().username}#${message.mentions.users.first().discriminator}**) warned!`)
   }
 }
