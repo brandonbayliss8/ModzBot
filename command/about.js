@@ -7,7 +7,7 @@ exports.run = (bot, message, args) => {
          const date = moment(now).format("MMM/DD/YYYY");
          const time = moment(now).format("H:mm:ss");
         const duration = moment.duration(bot.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
-        var quotes = ['send modznoob a joke!', 'omg I am working?!', 'cut ya hands off! jk', 'I luv yuo']
+        var quotes = ['send modznoob a joke!', 'omg I am working?!', 'yay I work']
         const randomNumber = Math.floor(Math.random() * (quotes.length));
       embed.setColor(3447003)
       .setAuthor(`ModzBot`, `http://kuuv.io/i/d035x2P.jpg`)
