@@ -20,7 +20,7 @@ exports.run = (bot, message, args) => {
       .addField(`My website`, `My website, with more information about me and my developer: http://modzon.weebly.com.`, true)
       .addField(`Commands`, `For a list of all the commands, use the \`::help\` command! A command list can also be found on my site.`, true)
       .addField(`Servers`, `I am currently in ${bot.guilds.size} servers!`, true)
-      .addField(`Bot version`, `Version 1.2.1`, true)
+      .addField(`Bot version`, `Version 1.2.3`, true)
       .setFooter(`${quotes[randomNumber]} Generated on ${date} at ${time}`)
 
       message.channel.sendEmbed(embed);
