@@ -2,7 +2,6 @@ const Discord = require("discord.js");
 exports.run = (bot, member) => {
 
       let guildid = member.guild.id;
-  if (guildid === "110373943822540800") return; //blacklist
            let guild = member.guild;
            const embed = new Discord.RichEmbed()
              embed.setColor('#00CE00')
