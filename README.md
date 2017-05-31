@@ -12,4 +12,4 @@ Join the official Discord server here! [Invite URL](https://discord.gg/qWbWNbB)
 ## Need support?
 Join the official Discord server [here](https://discord.gg/qWbWNbB)!
 Or, you can message the bot developer on Discord or Twitter.
-The usernames are **ModzOn#8775** on Discord, and **@ModzOnCR** on Twitter
+The usernames are **ModzOn#8775** on Discord, and [**@ModzOnCR**](https://www.twitter.com/ModzOnCR) on Twitter
