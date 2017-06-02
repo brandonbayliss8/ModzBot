@@ -12,6 +12,5 @@ exports.run = (bot, message, args) => {
 "     ▏╳▕▇▇▕ ▏╳▕▇▇▕",
 "     ╲▂╱╲▂╱ ╲▂╱╲▂╱",
   ]
-  message.reply("Here is Memedog for you!");
   message.channel.sendMessage(memedog);
 }
