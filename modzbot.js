@@ -9,6 +9,7 @@ const Discord = require("discord.js");
       prefix = ":";
       TOKEN = process.env.TOKEN;
 
+// Load the contents of the `/command/` folder and each file in it.
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {
@@ -122,7 +123,7 @@ bot.on("message", message => {
   if (message.author.bot) return; //ignore bot users
 
   if (!message.content.startsWith(config.prefix)) return; //ignore messages without prefix
-  
+
   if (musicCommands.hasOwnProperty(message.content.toLowerCase().slice(1).split(' ')[0])) musicCommands[message.content.toLowerCase().slice(1).split(' ')[0]](message); //runs music commands
 
   let command = message.content.split(" ")[0];
@@ -133,7 +134,7 @@ bot.on("message", message => {
 
   try {
     let cmd = require(`./command/${command}.js`);
-    cmd.run(bot, message, args);
+    cmd.run(bot, message, args, devs);
   } catch (err) {
     if (err.code === "MODULE_NOT_FOUND") return;
     console.error(err);
