@@ -17,7 +17,7 @@ exports.run = (bot, message, args) => {
     const time = moment(now).format("H:mm:ss");
     embed.setColor("#ffce03")
     .addField(`User warned: `, `**${message.mentions.users.first().username}#${message.mentions.users.first().discriminator}** (${message.mentions.users.first().id})`)
-    .addField(`Reason: `, args.join(' '))
+    .addField(`Reason: `, args.join(' ').replace(message.mentions.users.first(), ''))
     .addField(`Warned by:`, `**${message.author.username}#${message.author.discriminator}**`)
     .setFooter(`Warned on ${date}, at ${time}`)
 
