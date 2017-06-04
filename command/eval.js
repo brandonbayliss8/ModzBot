@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const moment = require("moment");
+require("moment-duration-format");
 const yt = require("ytdl-core");
 exports.run = (bot, message, args, devs) => {
   if (message.author.id !=="264331473308483584") return;
