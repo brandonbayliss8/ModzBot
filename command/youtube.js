@@ -21,7 +21,7 @@ args = args.join(" ").substring(command.length + 1);
                 }
             });
          };
-         let query = message.content.replace(':youtube search', '');
+         let query = message.content.replace('::youtube search', '');
        searchargs(query);
      }
 }
