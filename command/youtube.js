@@ -2,7 +2,7 @@ const moment = require("moment");
       yt = require("ytdl-core");
       YouTube = require("youtube-node");
       youTube = new YouTube();
-      youTube.setKey('AIzaSyAz7etLG7SeqL8YKNI0PDpzcRp6HUFF_Ug');
+      youTube.setKey(process.env.YTKEY);
 exports.run = (bot, message, args) => {
 if (!args[0]) return;
 let command = args[0].toLowerCase();
