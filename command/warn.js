@@ -4,8 +4,10 @@ exports.run = (bot, message, args) => {
   let warned = message.mentions.users.first();
   let admin = message.member.hasPermission("KICK_MEMBERS")
   let log = message.guild.channels.find("name", `mod-log`);
+  let reason = args.join(' ').replace(message.mentions.users.first(), '')
+  if (!reason) return message.reply(":no_entry_sign: Error: no reason provided!")
   if (!log) {
-    message.reply(`You haven't enabled the logs! Please enable the logs by \`::enable logs\`.`)
+    message.reply(`:no_entry_sign: You haven't enabled the logs! Please enable the logs by \`::enable logs\`.`)
   }else {
   if (message.mentions.users.size === 0) return message.reply(":no_entry_sign: Please mention a user to warn.");
   if (!admin) return message.reply(`:no_entry_sign: You do not have permission to run this command!`);
@@ -17,7 +19,7 @@ exports.run = (bot, message, args) => {
     const time = moment(now).format("H:mm:ss");
     embed.setColor("#ffce03")
     .addField(`User warned: `, `**${message.mentions.users.first().username}#${message.mentions.users.first().discriminator}** (${message.mentions.users.first().id})`)
-    .addField(`Reason: `, args.join(' ').replace(message.mentions.users.first(), ''))
+    .addField(`Reason: `, reason)
     .addField(`Warned by:`, `**${message.author.username}#${message.author.discriminator}**`)
     .setFooter(`Warned on ${date}, at ${time}`)
 
