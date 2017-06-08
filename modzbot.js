@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
       bot = new Discord.Client();
       yt = require('ytdl-core');
+      YouTube = require("youtube-node");
       moment = require("moment");
       streamOptions = { seek: 0, volume: 1 };
       config = require("./config.json"); //contains the prefix and bot token
