@@ -15,6 +15,10 @@ exports.run = (bot, message, args) => {
     message.reply(`banned ${message.mentions.users.first()}`);
     console.log(`${message.createdAt}: ${message.author.username} banned ${message.mentions.users.first()}`)
     } else {
+      let reason = args.join(' ').replace(message.mentions.users.first(), '')
+      if (!reason) {
+        reason = "No reason provided";
+      }
       let userToBan = message.mentions.users.first();
       if (!userToBan) return message.reply(`Please mention an user to ban!`)
       const embed = new Discord.RichEmbed()
@@ -23,7 +27,7 @@ exports.run = (bot, message, args) => {
         const time = moment(now).format("H:mm:ss");
         embed.setColor("#ff0303")
         .addField(`User banned: `, `**${message.mentions.users.first().username}#${message.mentions.users.first().discriminator}** (${message.mentions.users.first().id})`)
-        .addField(`Reason: `, args.join(' ').replace(message.mentions.users.first(), ''))
+        .addField(`Reason: `, reason)
         .addField(`Banned by:`, `**${message.author.username}#${message.author.discriminator}**`)
         .setFooter(`Banned on ${date}, at ${time}`)
       message.guild.member(userToBan).ban(7);
