@@ -11,6 +11,8 @@
 	"`::birth` shows when you have created your Discord account",
 	"`::bugreport` reports a bug to my developer",
 	"`::clear` clears an amount of messages in the channel",
+	"`::disable <parameter>` disables the mentioned parameter. See also: `::enable`",
+	"`::enable <parameter>` enables the mentioned parameter. Currently available to enable: `logs`",
 	"`::help` shows this help message",
 	"`::invite` sends my invite link",
 	"`::kick` kicks the __mentioned__ user",
@@ -27,14 +29,19 @@
 	"`::usergame` shows which game you are playing",
 	"`::userid` shows your user ID",
 	"`::userstats` shows some info about you/the mentioned user",
-	"`::userstatus` shows the status of you (online, idle, do not disturb, offline/invisible)"
+	"`::userstatus` shows the status of you (online, idle, do not disturb, offline/invisible)",
+    "`::warn <mentioned user> <reason>` warns the mentioned user. Logs have to be enabled for this command."
   ],
   "helpmsg2":
   [
     "**__ModzBot Music commands__**",
-	"__Note: To run these commands, you have to be in a voice channel first!",
-	"`::play` plays the YouTube URL in the voice channel",
-	"`::stop` stops the playback of the YouTube URL"
+	"`::add <song>` adds the song to the queue",
+	"`::join` makes the bot join your voice channel",
+	"`::play` plays the queue in the voice channel",
+	"`::pause` pauses the currently playing song",
+	"`::resume` resumes the song",
+	"`::skip` stops the playback of the currently playing song, and plays the next song (or stops if the queue is empty)",
+	"`::queue` shows the current queue"
   ],
   "helpmsg3":
   [
@@ -42,6 +49,9 @@
 	"__Do not forget you'll need the right permissions to run the commands!__",
 	"`::ban` bans the __mentioned__ user from the guild",
 	"`::clear` clears an amount of messages in the channel",
-	"`::kick` kicks the __mentioned__ user"
+	"`::disable <parameter>` disables the mentioned parameter. See also: `::enable`",
+	"`::enable <parameter>` enables the mentioned parameter. Currently available to enable: `logs`",
+	"`::kick` kicks the __mentioned__ user",
+	"`::warn <mentioned user> <reason>` warns the mentioned user. Logs have to be enabled for this command."
   ]
 }
