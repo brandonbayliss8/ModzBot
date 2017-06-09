@@ -8,8 +8,9 @@ exports.run = (bot, message, args) => {
   const time = moment(now).format("H:mm:ss");
   embed.setColor(3447003)
   .setAuthor(`Click here to invite ModzBot to your server!`)
-  .setURL(`https://discordapp.com/oauth2/authorize?client_id=297437352127627264&scope=bot&permissions=2146958591`)
-  .setFooter(`Invite link requested by ${message.author.username} | Generated on ${date}, at ${time}`)
+  .setURL(`https://discordapp.com/oauth2/authorize?client_id=297437352127627264&scope=bot&permissions=2146958591`, `Click here to invite ModzBot to your server!`)
+  .setFooter(`Requested by ${message.author.username} | If you are on a mobile client, try <::invite url> | Generated on ${date}, at ${time}`)
 
+  if (args[0] === "url") return message.reply("https://discordapp.com/oauth2/authorize?client_id=297437352127627264&scope=bot&permissions=2146958591");
   message.channel.sendEmbed(embed);
 }
