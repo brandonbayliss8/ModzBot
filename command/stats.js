@@ -7,7 +7,6 @@ exports.run = (bot, message, args) => {
          const date = moment(now).format("MMM/DD/YYYY");
          const time = moment(now).format("H:mm:ss");
         const duration = moment.duration(bot.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
-        const randomNumber = Math.floor(Math.random() * (quotes.length));
       embed.setColor(3447003)
       .setAuthor(`ModzBot Stats`, `http://kuuv.io/i/d035x2P.jpg`)
       .setTitle(`ModzBot Stats`)
