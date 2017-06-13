@@ -12,6 +12,7 @@ exports.run = (bot, message, args) => {
     "You'd probably wish that you don't have such an ugly face."
   ];
   const random = Math.floor(Math.random() * roasts.length);
+  if (message.author.id === "259758466942369794") return message.reply("oh nyet not you, you stupid furry go fuck some furries");
   if (args[0] === "me") {
     message.reply(roasts[random]);
   } else if (!args.join("")) {
