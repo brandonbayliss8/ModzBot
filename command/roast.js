@@ -5,7 +5,7 @@ exports.run = (bot, message, args) => {
     "Hello Kitty said goodbye to you",
     "You are so fat that the only alphabet letters you know are KFC",
     "You're so fat that you need cheats for Wii Fit",
-    "If Got was real, He wouldn't have made something as ugly as you.",
+    "If God was real, He wouldn't have made something as ugly as you.",
     "You are so stupid that you look at Aliexpress for cheap lifes to buy",
     "I can explain it to you, but you probably won't understand because you're so stupid.",
     "Greenland is hotter then you",
