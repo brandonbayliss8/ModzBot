@@ -34,7 +34,7 @@ exports.run = (bot, message, args) => {
       if (!userToKick) return message.reply(`Please mention a user to kick!`)
       message.guild.member(userToKick).kick();
       message.reply(`kicked ${message.mentions.users.first()}`);
-      logs.sendEmbed(embed);
+      logs.send({ embed });
       console.log(`${message.createdAt}: ${message.author.username} kicked ${message.mentions.users.first()}`)
       }
     }
