@@ -15,7 +15,7 @@ exports.run = (bot, member) => {
         const now = new Date();
         const date = moment(now).format("DD/MMM/YYYY");
         const time = moment(now).format("H:mm:ss");
-        guild.defaultChannel.sendMessage(msg);
+        guild.defaultChannel.send(msg);
         console.log(`${date}, ${time}: ${member} joined ${member.guild.name}`);
         //bot.channels.get("305057938567987200").sendEmbed(embed);
     }
