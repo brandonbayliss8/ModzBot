@@ -42,6 +42,6 @@ exports.run = (bot, message, args) => {
         .addField(`• Emojis`, `${emojis}`)
         .setFooter(`Generated on ${message.createdAt}`)
 
-        message.channel.sendEmbed(embed);
+        message.channel.send({ embed });
         console.log(`${message.createdAt}: ${message.author.username} requested serverinfo about ${bot.guilds.get(message.guild.id).name}`)
 }
