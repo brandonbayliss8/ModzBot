@@ -12,5 +12,5 @@ exports.run = (bot, message, args) => {
   .setFooter(`Requested by ${message.author.username} | If you are on a mobile client, try <::invite url> | Generated on ${date}, at ${time}`)
 
   if (args[0] === "url") return message.reply("https://discordapp.com/oauth2/authorize?client_id=297437352127627264&scope=bot&permissions=2146958591");
-  message.channel.sendEmbed(embed);
+  message.channel.send({ embed });
 }
