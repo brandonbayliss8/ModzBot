@@ -9,7 +9,7 @@ exports.run = (bot, message, args) => {
       let messagecount = parseInt(args[0]) + 1; //args are the message count
       message.channel.fetchMessages({limit: messagecount})
         .then(messages => message.channel.bulkDelete(messages));
-      message.channel.sendMessage(`:white_check_mark: Messages cleaned!`).then(message => message.delete(5000));
+      message.channel.send(`:white_check_mark: Messages cleaned!`).then(message => message.delete(5000));
       console.log(`${message.createdAt}: ${message.author.username} used the clear command in ${bot.guilds.get(message.guild.id).name}`);
       }
     }
