@@ -2,7 +2,6 @@ exports.run = (bot, message, args) => {
   if (message.guild !== null) {
       var output = args.join(" ");
 
-      if (message.author.id === "191165862022086656") return console.log(`${message.createdAt}: ${message.author.username} tried to report a bug but was blacklisted`);//blacklist
       //if (message.author.id === "") return console.log(`${message.createdAt}: ${message.author.username} tried to report a bug but was blacklisted`);//blacklist
 
       bot.channels.get("308533381048696832").sendMessage("A suggestion was received from " + "**" + message.member.guild.name + "**" + "\nUser who suggested this: **" + message.author.username + "**" + "```\n" + output + "\n```");
