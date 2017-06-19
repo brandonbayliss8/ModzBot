@@ -4,8 +4,8 @@ exports.run = (bot, message, args) => {
   var randomargs  = Math.floor( Math.random() * args) + 1;
   var random = Math.floor( Math.random() * 100) + 1;
   if (!args[0]) {
-    message.channel.sendMessage(random)
+    message.channel.send(random)
   } else {
-    message.channel.sendMessage(randomargs)
+    message.channel.send(randomargs)
   }
 }
