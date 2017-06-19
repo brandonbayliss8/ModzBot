@@ -7,10 +7,12 @@ exports.run = (bot, message, args) => {
          const date = moment(now).format("MMM/DD/YYYY");
          const time = moment(now).format("H:mm:ss");
         const duration = moment.duration(bot.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
+        var quotes = ['modzon sux!', 'omg Brem Djenzzen uses hax!', 'modz hab more subs then pewdiepoop!', 'I luv yuo!']
+        const randomNumber = Math.floor(Math.random() * (quotes.length));
       embed.setColor(3447003)
       .setAuthor(`ModzBot Stats`, `http://kuuv.io/i/d035x2P.jpg`)
       .setTitle(`ModzBot Stats`)
-      .setDescription(`am best bot!`)
+      .setDescription(`${quotes[randomNumber]}`)
       .setThumbnail(`http://kuuv.io/i/d035x2P.jpg`)
       .addField(`Lib`, `Discord.js (Javascript)`, true)
       .addField(`Version`, `1.2.5`, true)
@@ -19,9 +21,10 @@ exports.run = (bot, message, args) => {
       .addField(`Users`, `${bot.users.size.toLocaleString()}`, true)
       .addField(`Servers`, `${bot.guilds.size.toLocaleString()}`, true)
       .addField(`Channels`, `${bot.channels.size.toLocaleString()}`, true)
-      .setFooter(`am best bot! Generated on ${date} at ${time}`)
+      .addField(`Voice connections`, `${bot.voiceConnections.size}`, true)
+      .setFooter(`${quotes[randomNumber]} Generated on ${date} at ${time}`)
 
-      message.channel.sendEmbed(embed);
+      message.channel.send({ embed });
 
       console.log(`${message.createdAt}: ${message.author.username} requested stats about me`)
 }
