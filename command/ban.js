@@ -33,7 +33,7 @@ exports.run = (bot, message, args) => {
       message.guild.member(userToBan).ban(7);
       message.reply(`banned ${message.mentions.users.first()}`);
       console.log(`${message.createdAt}: ${message.author.username} banned ${message.mentions.users.first()}`)
-      logs.sendEmbed(embed);
+      logs.send({ embed });
       }
     }
   }
