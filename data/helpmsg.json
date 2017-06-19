@@ -10,6 +10,7 @@
 	"`::ban` bans the __mentioned__ user from the guild",
 	"`::birth` shows when you have created your Discord account",
 	"`::bugreport` reports a bug to my developer",
+  "`::cclean` cleans up all commands in the current channel",
 	"`::clear` clears an amount of messages in the channel",
 	"`::disable <parameter>` disables the mentioned parameter. See also: `::enable`",
 	"`::enable <parameter>` enables the mentioned parameter. Currently available to enable: `logs`",
@@ -18,33 +19,33 @@
 	"`::kick` kicks the __mentioned__ user",
 	"`::love` shows how many love there is between the user and the mentioned parameter",
 	"`::memedog` sends the Memedog in the current channel",
-	"`::mute` mutes the mentioned user.",
+  "`::mute` mutes the mentioned user",
 	"`::ping` pong!",
 	"`::rockpaperscissors` Rock, Paper or Scissors!",
 	"`::roll` generates a random number between 1 and 100/ 1 and the given parameter",
+  "`::serverlist` shows the list of my servers",
+  "`::servers` shows how many servers I am currently in",
 	"`::serverstats` shows info about the current server",
 	"`::stab` stabs the mentioned user",
 	"`::stats` shows some stats about me",
 	"`::suggest` sends a suggestion to my developer",
 	"`::support` sends the invite link to my own Server!",
-	"`::unmute` unmutes the mentioned muted user.",
+  "`::unmute` unmutes the mentioned muted user",
 	"`::usergame` shows which game you are playing",
 	"`::userid` shows your user ID",
 	"`::userstats` shows some info about you/the mentioned user",
 	"`::userstatus` shows the status of you (online, idle, do not disturb, offline/invisible)",
-    "`::warn <mentioned user> <reason>` warns the mentioned user. Logs have to be enabled for this command."
+  "`::warn <mentioned user> <reason>` warns the mentioned user. Logs have to be enabled for this command.",
+  "`::wiki <search argument>` shows the Wikipedia page of the mentioned parameter",
+  "`::youtube search <title>` search on the given parameter"
   ],
   "helpmsg2":
   [
     "**__ModzBot Music commands__**",
-	"The music commands are temporary disabled",
-	"`::add <song>` adds the song to the queue",
-	"`::join` makes the bot join your voice channel",
-	"`::play` plays the queue in the voice channel",
+	"`::play <url>` plays the YouTube URL in the voice channel. You can also search using `::youtube search <parameter>`, and then copy+paste the YouTube URL.",
 	"`::pause` pauses the currently playing song",
 	"`::resume` resumes the song",
-	"`::skip` stops the playback of the currently playing song, and plays the next song (or stops if the queue is empty)",
-	"`::queue` shows the current queue"
+	"`::stop` stops the playback of the currently playing song"
   ],
   "helpmsg3":
   [
@@ -55,8 +56,8 @@
 	"`::disable <parameter>` disables the mentioned parameter. See also: `::enable`",
 	"`::enable <parameter>` enables the mentioned parameter. Currently available to enable: `logs`",
 	"`::kick` kicks the __mentioned__ user",
-	"`::mute` mutes the mentioned user.",
-	"`::unmute` unmutes the mentioned muted user.",
+  "`::mute` mutes the mentioned user",
+  "`::unmute` unmutes the mentioned muted user",
 	"`::warn <mentioned user> <reason>` warns the mentioned user. Logs have to be enabled for this command."
   ]
 }
