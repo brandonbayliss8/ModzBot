@@ -1,6 +1,6 @@
 exports.run = (bot, message, args) => {
-  if (message.mentions.users.first() !== undefined) {
-    message.reply(`perkele сука блять I stabbed ${message.mentions.users.first()}`);
+  if (!args.join(' ')) {
+    message.reply(`perkele сука блять I stabbed... _you_`);
   } else {
     message.reply(`perkele сука блять I stabbed ${args.join(' ')}`);
   }
