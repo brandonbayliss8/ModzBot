@@ -14,8 +14,8 @@ exports.run = (bot, guild) => {
  "Thanks for using me in your server!"
 ];
 
-bot.channels.get("305383689464971264").sendMessage(toSend);
+bot.channels.get("305383689464971264").send(toSend);
 console.log(`I\'ve been added to ` + guild.name + `.`);
-    guild.defaultChannel.sendMessage(welcome);
+    guild.defaultChannel.send(welcome);
     bot.user.setGame(`::help ::about | In ${bot.guilds.size} servers!`);
   }
