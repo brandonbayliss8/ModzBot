@@ -6,7 +6,7 @@ exports.run = (bot, guild) => {
     "Guild Region: " + "\**" + guild.region + "\**"
   ];
 
-  bot.channels.get("305383689464971264").sendMessage(toSend);
+  bot.channels.get("305383689464971264").send(toSend);
   bot.user.setGame(`::help ::about | In ${bot.guilds.size} servers!`);
   console.log(`I've been removed from ${guild.name}`);
   }
