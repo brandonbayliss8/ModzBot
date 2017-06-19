@@ -5,7 +5,7 @@ exports.run = (bot, message, args) => {
       if (message.author.id === "191165862022086656") return console.log(`${message.createdAt}: ${message.author.username} tried to report a bug but was blacklisted`);//blacklist
       //if (message.author.id === "") return console.log(`${message.createdAt}: ${message.author.username} tried to report a bug but was blacklisted`);//blacklist
 
-      bot.channels.get("301421032210956289").sendMessage("A suggestion was received from " + "**" + message.member.guild.name + "**" + "\nUser who suggested this: **" + message.author.username + "**" + "```\n" + output + "\n```");
+      bot.channels.get("308533381048696832").sendMessage("A suggestion was received from " + "**" + message.member.guild.name + "**" + "\nUser who suggested this: **" + message.author.username + "**" + "```\n" + output + "\n```");
       bot.channels.get("307878217228877827").sendMessage(`**${message.author.username}** filled a suggestion \n \n User ID: **${message.author.id}** \n Server name: **${message.member.guild.name}** \n Server ID: **${message.member.guild.id}**`)
 
     message.channel.sendMessage("Suggestion submitted! For more info, join my Discord server: https://discord.gg/T2cvH6v");
