@@ -4,5 +4,5 @@ exports.run = (bot, message) => {
         let msg_array = msgs.array().filter(m => m.author.id === bot.user.id);
         message.channel.bulkDelete(msg_array);
       });
-    message.channel.sendMessage(":white_check_mark: Commands cleaned!");
+    message.channel.send(":white_check_mark: Commands cleaned!");
 }
