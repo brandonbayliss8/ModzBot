@@ -18,7 +18,7 @@ exports.run = (bot, message, args) => {
                             //console.log(muterole);
                             trainz.overwritePermissions(message.guild.roles.find("name", `ModzMute`),{SEND_MESSAGES:false});
                             console.log("Successfully created mute role");
-                            message.channel.sendMessage("Successfully created mute role");
+                            message.channel.send("Successfully created mute role");
                         });
 
                     });
