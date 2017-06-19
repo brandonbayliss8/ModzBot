@@ -8,6 +8,8 @@ exports.run = (bot, message, args) => {
   if (!message.guild.roles.find("name", `ModzMute`)) {
   let guild = message.member.guild;
   message.guild.createRole({ name: "ModzMute" ,permissions: []}).then(role => {
+                        // servermutes[gueldid]["muteRoleID"] = message.guild.roles.find("name", "SaltMuted").id;
+                        // Array.from(message.guild.channels).map(v=>overwritePermissions(message.guild.roles.get(servermutes[gueldid]["muteRoleID"]),{SEND_MESSAGES:false}));
                         Array.from(message.guild.channels).forEach(function(item, index) {
                             var Ilike = item[0];
                             //console.log(Ilike);
@@ -19,7 +21,7 @@ exports.run = (bot, message, args) => {
                     });
                     let member = message.guild.member(message.mentions.users.first());
                     member.addRole(message.guild.roles.find("name", `ModzMute`)).catch(console.error);
-                    message.channel.sendMessage(`:mute: Successfully muted ${muteuser}!`);
+                    message.channel.send(`:mute: Successfully muted ${muteuser}!`);
 } else {
 let member = message.guild.member(message.mentions.users.first());
 member.addRole(message.guild.roles.find("name", `ModzMute`)).catch(console.error);
