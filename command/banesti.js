@@ -1,3 +1,3 @@
 exports.run = (bot, message) => {
-  message.channel.sendMessage(`**Esteriore** left the server.`);
+  message.channel.send(`**Esteriore** left the server.`);
 }
