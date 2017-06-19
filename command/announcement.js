@@ -5,6 +5,6 @@ exports.run = (bot, message, args) => {
     } else {
     var announcement = args.join(" ")
     console.log(`${message.createdAt}: Announcement from the ModzBot developer: ` + announcement);
-    bot.guilds.forEach(guild => { guild.defaultChannel.sendMessage(announcement) });
+    bot.guilds.forEach(guild => { guild.defaultChannel.send(announcement) });
   }
 }
