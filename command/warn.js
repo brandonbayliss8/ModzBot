@@ -4,8 +4,12 @@ exports.run = (bot, message, args) => {
   let warned = message.mentions.users.first();
   let admin = message.member.hasPermission("KICK_MEMBERS")
   let log = message.guild.channels.find("name", `mod-log`);
-  let reason = args.join(' ').replace(message.mentions.users.first(), '')
-  if (!reason) return message.reply(":no_entry_sign: Error: no reason provided!")
+  var reason;
+  if (!args.join(' ').replace(message.mentions.users.first(), '')) {
+    reason = 'No reason provided';
+  } else {
+    reason = args.join(' ').replace(message.mentions.users.first(), '');
+  }
   if (!log) {
     message.reply(`:no_entry_sign: You haven't enabled the logs! Please enable the logs by \`::enable logs\`.`)
   }else {
@@ -23,7 +27,7 @@ exports.run = (bot, message, args) => {
     .addField(`Warned by:`, `**${message.author.username}#${message.author.discriminator}**`)
     .setFooter(`Warned on ${date}, at ${time}`)
 
-  log.sendEmbed(embed);
+  log.send({ embed });
   message.reply(`User (**${message.mentions.users.first().username}#${message.mentions.users.first().discriminator}**) warned!`)
   }
 }
