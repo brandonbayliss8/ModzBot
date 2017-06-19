@@ -4,9 +4,9 @@ exports.run = (bot, message, args) => {
   if (game.includes('{size}')) {
       let setgame = game.replace("{size}", bot.guilds.size);
       bot.user.setGame(`${setgame}`);
-      message.channel.sendMessage(`Game set to **${setgame}**!`);
+      message.channel.send(`Game set to **${setgame}**!`);
       } else {
       bot.user.setGame(`${game}`);
-      message.channel.sendMessage(`Game set to **${game}**!`);
+      message.channel.send(`Game set to **${game}**!`);
   }
 }
