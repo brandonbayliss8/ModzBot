@@ -6,43 +6,43 @@ exports.run = (bot, message, args) => {
   let wikipage = args;
   if (command === "nl") {
     if (!wikipage) return message.reply(`You didn't specify a Wikipedia page!`);
-    message.channel.sendMessage("https://nl.wikipedia.org/wiki/" + wikipage);
+    message.channel.send("https://nl.wikipedia.org/wiki/" + wikipage);
   }
   if (command === "fr") {
     if (!wikipage) return message.reply(`You didn't specify a Wikipedia page!`);
-    message.channel.sendMessage("https://fr.wikipedia.org/wiki/" + wikipage);
+    message.channel.send("https://fr.wikipedia.org/wiki/" + wikipage);
   }
   if (command === "en") {
     if (!wikipage) return message.reply(`You didn't specify a Wikipedia page!`);
-    message.channel.sendMessage("https://en.wikipedia.org/wiki/" + wikipage);
+    message.channel.send("https://en.wikipedia.org/wiki/" + wikipage);
   }
   if (command === "de") {
     if (!wikipage) return message.reply(`You didn't specify a Wikipedia page!`);
-    message.channel.sendMessage("https://de.wikipedia.org/wiki/" + wikipage);
+    message.channel.send("https://de.wikipedia.org/wiki/" + wikipage);
   }
   if (command === "fi") {
     if (!wikipage) return message.reply(`You didn't specify a Wikipedia page!`);
-    message.channel.sendMessage("https://fi.wikipedia.org/wiki/" + wikipage);
+    message.channel.send("https://fi.wikipedia.org/wiki/" + wikipage);
   }
   if (command === "vn") {
     if (!wikipage) return message.reply(`You didn't specify a Wikipedia page!`);
-    message.channel.sendMessage("https://vi.wikipedia.org/wiki/" + wikipage);
+    message.channel.send("https://vi.wikipedia.org/wiki/" + wikipage);
   }
   if (command === "cn") {
     if (!wikipage) return message.reply(`You didn't specify a Wikipedia page!`);
-    message.channel.sendMessage("https://zh.wikipedia.org/wiki/" + wikipage);
+    message.channel.send("https://zh.wikipedia.org/wiki/" + wikipage);
   }
   if (command === "jp") {
     if (!wikipage) return message.reply(`You didn't specify a Wikipedia page!`);
-    message.channel.sendMessage("https://ja.wikipedia.org/wiki/" + wikipage);
+    message.channel.send("https://ja.wikipedia.org/wiki/" + wikipage);
   }
   if (command === "ru") {
     if (!wikipage) return message.reply(`You didn't specify a Wikipedia page!`);
-    message.channel.sendMessage("https://ru.wikipedia.org/wiki/" + wikipage);
+    message.channel.send("https://ru.wikipedia.org/wiki/" + wikipage);
   }
   if (command === "sv") {
     if (!wikipage) return message.reply(`You didn't specify a Wikipedia page!`);
-    message.channel.sendMessage("https://sv.wikipedia.org/wiki/" + wikipage);
+    message.channel.send("https://sv.wikipedia.org/wiki/" + wikipage);
   }
   if (command === "help") {
     let helpmsg = [
@@ -57,6 +57,6 @@ exports.run = (bot, message, args) => {
       "`::wiki en Bayern Munich`",
       "will return the Wikipedia page about the Football Club Bayern Munich"
     ];
-    message.channel.sendMessage(helpmsg);
+    message.channel.send(helpmsg);
   }
 }
