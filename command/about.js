@@ -23,7 +23,7 @@ exports.run = (bot, message, args) => {
       .addField(`Bot version`, `Version 1.2.5`, true)
       .setFooter(`${quotes[randomNumber]} Generated on ${date} at ${time}`)
 
-      message.channel.sendEmbed(embed);
+      message.channel.send({ embed });
 
       console.log(`${message.createdAt}: ${message.author.username} requested info about me`)
 }
