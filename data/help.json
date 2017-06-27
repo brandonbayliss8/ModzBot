@@ -1,0 +1,306 @@
+{
+  "helpALL":
+  [
+    "__**ModzBot Help**__",
+    "The prefix for every command is `::`.",
+	"If you need more help, you can join my Discord server by using the `::support` command!",
+  "If you want to view command-specific help, use `::help <command_name>`",
+	"`::8ball` answers your question",
+  "`::9gag` shows a 9gag image from the specified category",
+	"`::about` shows info about me",
+	"`::avatar` shows your avatar",
+	"`::ban` bans the __mentioned__ user from the guild",
+	"`::birth` shows when you have created your Discord account",
+	"`::bugreport` reports a bug to my developer",
+  "`::cclean` cleans up all commands in the current channel",
+	"`::clear` clears an amount of messages in the channel",
+	"`::disable` disables the mentioned parameter.",
+	"`::enable` enables the mentioned parameter.",
+	"`::help` shows this help message",
+	"`::invite` sends my invite link",
+	"`::kick` kicks the __mentioned__ user",
+	"`::love` shows how many love there is between the user and the mentioned parameter",
+  "`::mute` mutes the mentioned user",
+	"`::ping` pong!",
+  "`::play` plays music in your current Voice Channel",
+	"`::rockpaperscissors` Rock, Paper or Scissors!",
+	"`::roll` generates a random number between 1 and 100/ 1 and the given parameter",
+  "`::serverlist` shows the list of my servers",
+  "`::servers` shows how many servers I am currently in",
+	"`::serverstats` shows info about the current server",
+	"`::stab` stabs the mentioned user",
+	"`::stats` shows some stats about me",
+	"`::suggest` sends a suggestion to my developer",
+	"`::support` sends the invite link to my own Server!",
+  "`::tell` makes me say what you want",
+  "`::unmute` unmutes the mentioned muted user",
+	"`::usergame` shows which game you are playing",
+	"`::userid` shows your user ID",
+	"`::userstats` shows some info about you/the mentioned user",
+	"`::userstatus` shows the status of you (online, idle, do not disturb, offline/invisible)",
+  "`::warn` warns the mentioned user. Logs have to be enabled for this command.",
+  "`::wiki` shows the Wikipedia page of the mentioned parameter",
+  "`::youtube` search on the given parameter"
+  ],
+  "helpMUSIC":
+  [
+    "**__ModzBot Music commands__**",
+	"`::play` plays the YouTube URL in the voice channel.",
+	"`::pause` pauses the currently playing song",
+	"`::resume` resumes the song",
+	"`::stop` stops the playback of the currently playing song"
+  ],
+  "helpADMIN":
+  [
+    "**__ModzBot Admin commands__**",
+	"__Do not forget you'll need the right permissions to run the commands!__",
+	"`::ban` bans the __mentioned__ user from the guild",
+	"`::clear` clears an amount of messages in the channel",
+	"`::disable <parameter>` disables the mentioned parameter. See also: `::enable`",
+	"`::enable <parameter>` enables the mentioned parameter. Currently available to enable: `logs`",
+	"`::kick` kicks the __mentioned__ user",
+  "`::mute` mutes the mentioned user",
+  "`::unmute` unmutes the mentioned muted user",
+	"`::warn <mentioned user> <reason>` warns the mentioned user. Logs have to be enabled for this command."
+  ],
+  "8ball":
+  {
+    "name":"8ball",
+    "usage":"8ball <question>",
+    "description":"Ask me a question!"
+  },
+  "9gag":
+  {
+    "name":"9gag",
+    "usage":"9gag <category>",
+    "description":"View a 9gag image from the specified category!",
+    "info":"Use the 9gag command without arguments to see the list of available categories."
+  },
+  "about":
+  {
+    "name":"about",
+    "usage":"about",
+    "description":"Shows info about me!"
+  },
+  "avatar":
+  {
+    "name":"avatar",
+    "usage":"avatar | ::avatar <mentioned-user>",
+    "description":"Shows the avatar of the author/mentioned user."
+  },
+  "ban":
+  {
+    "name":"ban",
+    "usage":"ban <user> <reason>",
+    "description":"Bans the mentioned user.",
+    "info":"Add a reason only if the modlog is enabled"
+  },
+  "birth":
+  {
+    "name":"birth",
+    "usage":"birth",
+    "description":"Shows when you have created your Discord account"
+  },
+  "bugreport":
+  {
+    "name":"bugreport",
+    "usage":"bugreport <bug>",
+    "description":"Reports the bug to my developer"
+  },
+  "cclean":
+  {
+    "name":"cclean",
+    "usage":"cclean",
+    "description":"Cleans all botcommands in the current channel"
+  },
+  "clear":
+  {
+    "name":"clear",
+    "usage":"clear <number of messages to clear>",
+    "description":"Clears the specified amount of messages. Clears 100 messages when there's no number specified",
+    "info":"Limit of 100, cannot clear messages older then 2 weeks due to a Discord API limitation"
+  },
+  "disable":
+  {
+    "name":"disable",
+    "usage":"disable <parameter>",
+    "description":"Disables the given parameter",
+    "info":"Currently available: `logs`"
+  },
+  "enable":
+  {
+    "name":"enable",
+    "usage":"enable <parameter>",
+    "description":"Enables the given parameter",
+    "info":"Currently available: `logs`"
+  },
+  "help":
+  {
+    "name":"help",
+    "usage":"help | help <category> | help <command>",
+    "description":"Shows the help message, either per category or per command",
+    "info":"Categories: `all`, `music` and `moderation`"
+  },
+  "invite":
+  {
+    "name":"invite",
+    "usage":"invite | invite url",
+    "description":"Sends my invite link",
+    "info":"`invite url` sends my URL for people using the mobile Discord client"
+  },
+  "kick":
+  {
+    "name":"kick",
+    "usage":"kick <user> <reason>",
+    "description":"Kicks the mentioned user",
+    "info":"Only specify a reason when the modlogs are enabled"
+  },
+  "love":
+  {
+    "name":"love",
+    "usage":"love <parameter>",
+    "description":"Shows how many love there is between the user and the given parameter",
+    "info":"Random percentage generated between 1%/100%, don't take this seriously lmao"
+  },
+  "mute":
+  {
+    "name":"mute",
+    "usage":"mute <user>",
+    "description":"Mutes the mentioned user"
+  },
+  "ping":
+  {
+    "name":"ping",
+    "usage":"ping",
+    "description":"Pong!"
+  },
+  "play":
+  {
+    "name":"play",
+    "usage":"play <youtube-url>",
+    "description":"Plays the given YouTube video. You have to be in a voice channel for this command.",
+    "info":"When playing, you can use the `::stop` command to stop the music, `::pause` to pause the music and `::resume` to resume the paused music. Works only when ModzBot is playing music in a voice channel."
+  },
+  "roast":
+  {
+    "name":"roast",
+    "usage":"roast <user>",
+    "description":"Roasts the mentioned user",
+    "info":"Use `::roast me` to roast yourself"
+  },
+  "rockpaperscissors":
+  {
+    "name":"rockpaperscissors",
+    "usage":"rockpaperscissors <choice>",
+    "description":"Play Rock Paper and Scissors with you!",
+    "info":"Choices available: `rock`, `paper` and `scissors`"
+  },
+  "roll":
+  {
+    "name":"roll",
+    "usage":"roll <number>",
+    "description":"Rolls a number between 1 and the given number (Max 100). If no number specified, it will roll a random number between 1 and 100"
+  },
+  "servers":
+  {
+    "name":"servers",
+    "usage":"servers",
+    "description":"Shows in how many servers I'm currently in"
+  },
+  "serverstats":
+  {
+    "name":"serverstats",
+    "usage":"serverstats",
+    "description":"Shows some info about this guild"
+  },
+  "set":
+  {
+    "name":"set",
+    "usage":"set <option> <text>",
+    "description":"Command currently under construction, along with customised Welcome/Leave messages"
+  },
+  "stab":
+  {
+    "name":"stab",
+    "usage":"stab <parameter>",
+    "description":"Stabs the given parameter"
+  },
+  "stats":
+  {
+    "name":"stats",
+    "usage":"stats",
+    "description":"Shows some stats about me"
+  },
+  "suggest":
+  {
+    "name":"suggest",
+    "usage":"suggest <suggestion>",
+    "description":"Suggest a feature to my developer"
+  },
+  "support":
+  {
+    "name":"support",
+    "usage":"support",
+    "description":"Sends an invite URL to my official server for support"
+  },
+  "tell":
+  {
+    "name":"tell",
+    "usage":"tell <parameter>",
+    "description":"Let's me say the given parameter in the current channel"
+  },
+  "unmute":
+  {
+    "name":"unmute",
+    "usage":"unmute <muted-user>",
+    "description":"Unmutes the muted mentioned user",
+    "info":"Only works if the mentioned user is actually muted"
+  },
+  "usergame":
+  {
+    "name":"usergame",
+    "usage":"usergame <user>",
+    "description":"Shows which game the mentioned user is currently playing"
+  },
+  "userid":
+  {
+    "name":"userid",
+    "usage":"userid <user>",
+    "description":"Sends the ID of the mentioned user"
+  },
+  "userstats":
+  {
+    "name":"userstats",
+    "usage":"userstats <user>",
+    "description":"Shows some info about the mentioned user",
+    "info":"If there's no user mentioned, it will show info about the author"
+  },
+  "userstatus":
+  {
+    "name":"userstauts",
+    "usage":"userstatus <user>",
+    "description":"Shows the status (online, idle, do not disturb, offline/invisible) of the mentioned user",
+    "info":"If no user mentioned, it'll show the status of the author"
+  },
+  "warn":
+  {
+    "name":"warn",
+    "usage":"warn <user> <reason>",
+    "description":"Warns the mentioned user and writes it to the modlog",
+    "info":"Command only works if the modlog is enabled"
+  },
+  "wiki":
+  {
+    "name":"wiki",
+    "usage":"wiki <language> <search argument>",
+    "description":"Searches for a WikiPedia page in the specified language",
+    "info":"Use `::wiki help` for a list of available languages"
+  },
+  "youtube":
+  {
+    "name":"youtube",
+    "usage":"youtube <option> <search argument>",
+    "description":"Searches on YouTube for a video",
+    "info":"Available options: `search`, `url`"
+  }
+}
