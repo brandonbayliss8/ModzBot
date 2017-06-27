@@ -1,3 +1,9 @@
+const fs = require("fs");
+      data = JSON.parse(fs.readFileSync('./data/data.json', 'utf8'));
+      moment = require('moment');
+      now = new Date();
+      date = moment(now).format("MMM/DD/YYYY");
+      time = moment(now).format("H:mm:ss");
 exports.run = (bot, message, args) => {
   if (!args[0]) return;
   let command = args[0].toLowerCase();
