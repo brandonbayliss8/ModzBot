@@ -1,5 +1,14 @@
 const moment = require("moment");
+    //  wiki = require(`wikijs`).default;
+    //  Intlpedia = require('intl-wikipedia');
 exports.run = (bot, message, args) => {
+  //wiki().search('star wars', 1).then(data => console.log(JSON.stringify(data, null, 2)));
+  //wiki().page('batman').then(page => message.channel.send(page.summary()));
+
+//  wiki().search(args.join(' '), 1).then(data => {
+//    if (!data) return message.reply(`Nothing found!`);
+//    message.channel.send(JSON.stringify(data.results[0], null, 2).replace("\"", ''))
+//  })
   if (!args[0]) return;
   let command = args[0].toLowerCase();
   args = args.join("_").substring(command.length + 1);
