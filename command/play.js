@@ -6,6 +6,7 @@ exports.run = (bot, message, args, err) => {
     if (!voiceChannel) {
       return message.reply(`Please be in a voice channel first!`);
     }
+    if (url.includes("https://youtube.com/") || url.includes("https://www.youtube.com/") || url.includes("http://youtube.com/") || url.includes("http://www.youtube.com/") || url.includes("https://youtu.be/") || url.includes("https://www.youtu.be/") || url.includes("http://youtu.be/") || url.includes("http://www.youtu.be/")) {
     voiceChannel.join()
       .then(connnection => {
         dispatcher = message.guild.voiceConnection.playStream(yt(url, {
@@ -14,20 +15,25 @@ exports.run = (bot, message, args, err) => {
             passes: 1
         });
         yt.getInfo(url, function(err, info) {
-        message.channel.send(":notes: Playing **" + info.title + "** for **" + message.author.username + "**");
+        if (err) {
+          voiceChannel.leave();
+          message.reply("Error! \n" + err);
+        } else {
+          message.channel.send(":notes: Playing **" + info.title + "** for **" + message.author.username + "**");
+          }
         });
-        let collector = message.channel.createCollector(m => m);
+        let collector = message.channel.createMessageCollector(m => m);
         collector.on('collect', c => {
             if (c.content.startsWith('::pause')) {
-                message.channel.sendMessage('Song paused').then(() => {
+                message.channel.send('Song paused').then(() => {
                     dispatcher.pause();
                 });
             } else if (c.content.startsWith('::resume')) {
-                message.channel.sendMessage('Song resumed').then(() => {
+                message.channel.send('Song resumed').then(() => {
                     dispatcher.resume();
                 });
             } else if (c.content.startsWith('::stop')) {
-                message.channel.sendMessage('Stopped').then(() => {
+                message.channel.send('Stopped').then(() => {
                     dispatcher.end();
                 });
         }
@@ -37,10 +43,13 @@ exports.run = (bot, message, args, err) => {
             voiceChannel.leave();
         });
         dispatcher.on('error', (err) => {
-            return message.channel.sendMessage(':no_entry_sign: Error: ' + err).then(() => {
+            return message.channel.send(':no_entry_sign: Error: ' + err).then(() => {
                 collector.stop();
                 voiceChannel.leave();
             });
         });
     })
+  } else {
+    message.reply("Enter a valid Youtube URL!");
+  }
   }
