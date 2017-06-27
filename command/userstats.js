@@ -24,7 +24,7 @@ exports.run = (bot, message, args) => {
     user = message.mentions.users.first();
   };
       const embed = new Discord.RichEmbed()
-        embed.setColor(3447003)
+        embed.setColor("RANDOM")
         .setAuthor(`${user.username}`, user.avatarURL)
         .setTitle(`${user.username}` , "Information about this user!")
         .setDescription(`Information about ${user.username}`)
