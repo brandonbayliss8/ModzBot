@@ -1,5 +1,5 @@
 exports.run = (bot, guild) => {
-  let toSend = `I've been removed from **${guild.name}**
+  let toSend = `I've been invited to **${guild.name}**
 Guild ID: **${guild.id}**
 Guild Member Count: **${guild.memberCount}**
 Guild Region: **${guild.region}**`;
