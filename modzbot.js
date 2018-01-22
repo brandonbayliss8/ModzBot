@@ -6,7 +6,7 @@ const Discord = require("discord.js");
       streamOptions = { seek: 0, volume: 1 };
       config = require("./config.json"); //contains the prefix and bot token
       fs = require("fs");
-      devs = "264331473308483584"
+      devs = "206037786808156160"
       prefix = ":!";
       TOKEN = "NDA0OTcxNDc2NDU0NzM1ODcy.DUdmsQ.t-vjhNyqzY_IeTAT_ORMRN2cKyI";
 
@@ -50,7 +50,7 @@ bot.on("message", message => {
   }
 });
 
-bot.login(process.env.Token);
+bot.login("NDA0OTcxNDc2NDU0NzM1ODcy.DUdmsQ.t-vjhNyqzY_IeTAT_ORMRN2cKyI");
 
 process.on("unhandledRejection", err => {
   console.error("Uncaught Promise Error: \n" + err.stack);
