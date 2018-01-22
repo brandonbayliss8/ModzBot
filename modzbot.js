@@ -7,8 +7,8 @@ const Discord = require("discord.js");
       config = require("./config.json"); //contains the prefix and bot token
       fs = require("fs");
       devs = "264331473308483584"
-      prefix = "::";
-      TOKEN = process.env.TOKEN;
+      prefix = ":!";
+      TOKEN = "NDA0OTcxNDc2NDU0NzM1ODcy.DUdmsQ.t-vjhNyqzY_IeTAT_ORMRN2cKyI";
 
 // Load the contents of the `/events/` folder and each file in it.
 fs.readdir("./events/", (err, files) => {
