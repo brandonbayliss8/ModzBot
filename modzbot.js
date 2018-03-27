@@ -8,7 +8,7 @@ const Discord = require("discord.js");
       fs = require("fs");
       devs = "206037786808156160"
       prefix = ":!";
-      TOKEN = "NDA0OTcxNDc2NDU0NzM1ODcy.DUdmsQ.t-vjhNyqzY_IeTAT_ORMRN2cKyI";
+      TOKEN = "NDI3NDQ3NDA0ODE2NjI5NzYx.DZvDYQ.jCCe7RdczQLKDfsXT07NYO-G6no";
 
 // Load the contents of the `/events/` folder and each file in it.
 fs.readdir("./events/", (err, files) => {
@@ -50,7 +50,7 @@ bot.on("message", message => {
   }
 });
 
-bot.login("NDA0OTcxNDc2NDU0NzM1ODcy.DUdmsQ.t-vjhNyqzY_IeTAT_ORMRN2cKyI");
+bot.login("NDI3NDQ3NDA0ODE2NjI5NzYx.DZvDYQ.jCCe7RdczQLKDfsXT07NYO-G6no");
 
 process.on("unhandledRejection", err => {
   console.error("Uncaught Promise Error: \n" + err.stack);
